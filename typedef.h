@@ -39,3 +39,4 @@ enum class _ELayer {
 // duplication
 #undef GetClassName
 
+#define _DEBUG 1

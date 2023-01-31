@@ -1,31 +1,6 @@
-#pragma once
+#include <22TestApplication/PTS1/PTS1.h>
 
-#include <22TestApplication/typedef.h>
-#define _PTS1_Id _GET_TESTLAYER_UID(_ELayer_TestApplication::_ePTS1)
-#define _PTS1_Name "PTS1"
-#include <22TestApplication/PTS1/Config.h>
-
-#include <21TestPlatform/TestCase/TestSuite.h>
-#include <13PTechnical/PMemoryManager/PMemory.h>
-
-#include <22TestApplication/PTS1/PTC11/PTC11.h>
-#include <22TestApplication/PTS1/PTC12/PTC12.h>
-#include <22TestApplication/PTS1/PTC13/PTC13.h>
-#include <22TestApplication/PTS1/PTC14/PTC14.h>
-
-template <int SIZE_SYSTEM_MEMORY, int SIZE_USER_MEMORY, int SIZE_PAGE, int SIZE_SLOT_UNIT>
-class PTS1: public TestSuite {
-private:
-	Memory* m_pMemory;
-
-	size_t m_szSystemMemory;
-	char* m_pSystemMemeoryAllocated;
-
-	size_t m_szUserMemory;
-	char* m_pUserMemeoryAllocated;
-
-public:
-	PTS1(
+	PTS1::PTS1(
 		unsigned classId = _PTS1_Id,
 		const char* pClassName = _PTS1_Name)
 		: TestSuite(classId, pClassName)
@@ -34,10 +9,10 @@ public:
 		, m_pUserMemeoryAllocated(nullptr)
 	{
 	}
-	virtual ~PTS1() {
+	PTS1::~PTS1() {
 	}
 
-	void Initialize() {
+	void PTS1::Initialize() {
 		try {
 			// system memory allocation
 			m_szSystemMemory = SIZE_SYSTEM_MEMORY;
@@ -65,7 +40,7 @@ public:
 		}
 	}
 
-	void Finalize() {
+	void PTS1::Finalize() {
 		try {
 			m_pMemory->Finalize();
 			m_pMemory->GetPPageList()->Show("");
@@ -80,5 +55,3 @@ public:
 			exit(2);
 		}
 	}
-};
-

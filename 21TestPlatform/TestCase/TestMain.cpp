@@ -9,10 +9,12 @@ TestMain::~TestMain() {
 }
 
 void TestMain::InitializeMain() {
+    TestObject::Initialize();
     this->Initialize();
 }
 void TestMain::FinalizeMain() {
     this->Finalize();
+    TestObject::Finalize();
 }
 
 void TestMain::RunMain() {

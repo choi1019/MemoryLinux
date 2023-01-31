@@ -23,3 +23,4 @@ enum class _ETestLayer {
 #include <string>
 using namespace std;
 
+#define _TESTDEBUG 1

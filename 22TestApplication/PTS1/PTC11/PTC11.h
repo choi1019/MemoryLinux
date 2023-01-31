@@ -12,7 +12,9 @@ private:
 	DomainObject11* m_pDomainObject;
 
 public:
-	PTC11(unsigned nClassId = _PTC11_Id, const char* pcClassName = _PTC11_Name);
+	PTC11(
+		unsigned nClassId = _PTC11_Id, 
+		const char* pcClassName = _PTC11_Name);
 	virtual ~PTC11();
 
 	void Initialize();

@@ -117,8 +117,6 @@ public:
 	}
 };
 
-#define _DEBUG 1
-
 #if _DEBUG
 	#define LOG_HEADER(...) Log(__VA_ARGS__).PrintHeader()
 	#define LOG_FOOTER(...) Log(__VA_ARGS__).PrintFooter()

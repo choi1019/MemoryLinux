@@ -20,8 +20,11 @@ protected:
 	void DeleteTestCases();
 	
 public:
-	TestSuite(unsigned nClassId = _TestSuite_Id, const char* pClassName = _TestSuite_Name);
+	TestSuite(
+		unsigned nClassId = _TestSuite_Id, 
+		const char* pClassName = _TestSuite_Name);
 	virtual ~TestSuite();
+
 	void InitializeSuite();
 	void FinalizeSuite();
 	void RunSuite();

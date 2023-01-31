@@ -12,6 +12,7 @@
                 "${workspaceFolder}/22TestApplication/PTestMain/PTestMain.cpp",
                 "${workspaceFolder}/22TestApplication/PTS2/PTC21/*.cpp",
                 "${workspaceFolder}/22TestApplication/PTS2/PTC22/*.cpp",
+                "${workspaceFolder}/22TestApplication/PTS2/*.cpp",
                 "${workspaceFolder}/22TestApplication/PTS1/PTC11/*.cpp",
                 "${workspaceFolder}/22TestApplication/PTS1/PTC12/*.cpp",
                 "${workspaceFolder}/22TestApplication/PTS1/PTC13/*.cpp",

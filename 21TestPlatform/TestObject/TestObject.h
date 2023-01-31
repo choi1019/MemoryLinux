@@ -11,19 +11,9 @@ public:
 	static unsigned s_uCounter;
 
 	// static members
-	void* operator new(size_t szThis, const char* sMessage) {
-		void* pObject = malloc(szThis);
-		printf("\n#TestObject::malloc %s(%zu) = %zu", sMessage, szThis, (size_t)pObject);
-		return pObject;
-	}
-	void operator delete(void* pObject) {
-		printf("\n#TestObject::free (%zu)", (size_t)pObject);
-		free(pObject);
-	}
-	void operator delete(void* pObject, const char* sMessage) {
-		printf("\n#DUMMY TestObject::free %s(%zu)", sMessage,(size_t)pObject);
-		free(pObject);
-	}
+	void* operator new(size_t szThis, const char* sMessage);
+	void operator delete(void* pObject);
+	void operator delete(void* pObject, const char* sMessage);
 
 private:
 	unsigned m_uObjectId;

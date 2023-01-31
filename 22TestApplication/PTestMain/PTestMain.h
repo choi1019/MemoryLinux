@@ -8,8 +8,9 @@
 
 class PTestMain : public TestMain {
 public:
-	PTestMain(unsigned nClassId = _PTestMain_ID,	const char* pcClassName = _PTestMain_NAME);
+	PTestMain(unsigned nClassId = _PTestMain_ID, const char* pcClassName = _PTestMain_NAME);
 	~PTestMain();
+	
 	void Initialize() override;
 	void Finalize() override;
 };
