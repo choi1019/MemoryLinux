@@ -23,13 +23,13 @@ public:
 			throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "Memory","new","_eNoMoreSystemMemory");
 		}		
 		
-		s_pSystemMemoryAllocated = pSystemMemory;
-		s_pCurrentSystemMemoryAllocated = (void *)((size_t)pSystemMemory + szThis);
-		s_szSystemMemoryAllocated = szSystemMemory - szThis;
+		MemoryObject::s_pSystemMemoryAllocated = pSystemMemory;
+		MemoryObject::s_pCurrentSystemMemoryAllocated = (void *)((size_t)pSystemMemory + szThis);
+		MemoryObject::s_szSystemMemoryAllocated = szSystemMemory - szThis;
 
 		SlotList::s_pSlotListFree = nullptr;
 
-		return s_pSystemMemoryAllocated;
+		return MemoryObject::s_pSystemMemoryAllocated;
 	}
 	void operator delete(void* pObject) {
 		LOG_NEWLINE("@delete Memory(pObject)", (size_t)pObject);
@@ -189,14 +189,16 @@ public:
 			exit(1);
 		}
 	}
-
+	static size_t s_szSystemMemoryAllocated;
+	static void* s_pSystemMemoryAllocated;
+	static void* s_pCurrentSystemMemoryAllocated;
 	// maintenance
 	virtual void Show(const char* pTitle) {
 		LOG_HEADER("Memory::Show-", pTitle);
 		LOG_NEWLINE("SystemMemory(size, current, allocated)"
-			, SystemMemoryObject::s_szSystemMemoryAllocated
-			, (size_t)SystemMemoryObject::s_pCurrentSystemMemoryAllocated
-			, (size_t)SystemMemoryObject::s_pSystemMemoryAllocated
+			, MemoryObject::s_szSystemMemoryAllocated
+			, (size_t)MemoryObject::s_pCurrentSystemMemoryAllocated
+			, (size_t)MemoryObject::s_pSystemMemoryAllocated
 		);
 		m_pPageList->Show("");
 

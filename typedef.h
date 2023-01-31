@@ -38,3 +38,4 @@ enum class _ELayer {
 #include <stdio.h>
 // duplication
 #undef GetClassName
+

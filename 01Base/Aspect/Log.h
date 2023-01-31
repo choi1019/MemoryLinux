@@ -117,12 +117,13 @@ public:
 	}
 };
 
+#define _DEBUG 1
 
 #if _DEBUG
-	#define LOG_HEADER(CLASSNAME, ...) Log(CLASSNAME, __VA_ARGS__).PrintHeader()
+	#define LOG_HEADER(...) Log(__VA_ARGS__).PrintHeader()
 	#define LOG_FOOTER(...) Log(__VA_ARGS__).PrintFooter()
-	#define LOG_NEWLINE(CLASSNAME, ...) Log(CLASSNAME, __VA_ARGS__).Println()
-	#define LOG(CLASSNAME, ...) Log(CLASSNAME, __VA_ARGS__).Print()
+	#define LOG_NEWLINE(...) Log(__VA_ARGS__).Println()
+	#define LOG(...) Log(__VA_ARGS__).Print()
 //	#define LOG_TIME(...) Log(__VA_ARGS__).PrintTime()
 #else
 	#define LOG_HEADER(CLASSNAME, ...)

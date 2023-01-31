@@ -16,7 +16,7 @@ TestObject::~TestObject() {}
 
 void TestObject::BeforeInitialize() {
     TestLog().PrintSeparator();
-    TestLog(this->GetClassName(), "Initialize", "���� �մϴ�").Println();
+    TestLog(this->GetClassName(), "Initialize", "Start").Println();
     TestLog().PrintSeparator();
     TestLog::AddTab();
 }
@@ -26,7 +26,7 @@ void TestObject::Initialize() {
 
 void TestObject::BeforeRun() {
     TestLog().PrintSeparator();
-    TestLog(this->GetClassName(), "Run", "���� �մϴ�").Println();
+    TestLog(this->GetClassName(), "Run", "Start").Println();
     TestLog().PrintSeparator();
     TestLog::AddTab();
 }
@@ -37,7 +37,7 @@ void TestObject::Run() {
 void TestObject::AfterRun() {
     TestLog::RemoveTab();
     TestLog().PrintSeparator();
-    TestLog(this->GetClassName(), "Run", "���� �Ǿ����ϴ�").Println();
+    TestLog(this->GetClassName(), "Run", "End").Println();
     TestLog().PrintSeparator();
 }
 
@@ -47,6 +47,6 @@ void TestObject::Finalize() {
 void TestObject::AfterFinalize() {
     TestLog::RemoveTab();
     TestLog().PrintSeparator();
-    TestLog(this->GetClassName(), "Finalize", "���� �Ǿ����ϴ�").Println();
+    TestLog(this->GetClassName(), "Finalize", "End").Println();
     TestLog().PrintSeparator();
 }
