@@ -1,7 +1,6 @@
 
 #include <22TestApplication/PTS1/PTC11/PTC11.h>
-
-//#include <13PTechnical/PMemoryManager/PMemory.h>
+#include <22TestApplication/PTS1/PTC11/Config.h>
 
 PTC11::PTC11(unsigned nClassId, const char* pcClassName)
     : TestCase(nClassId, pcClassName)

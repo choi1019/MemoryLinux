@@ -8,8 +8,14 @@
                 "-fdiagnostics-color=always",
                 "-I/home/choisw1019/ProjectsCPP/PlatformLinux/",
                 "-g",
+                "${workspaceFolder}/Main.cpp",
                 "${workspaceFolder}/22TestApplication/PTestMain/PTestMain.cpp",
+                "${workspaceFolder}/22TestApplication/PTS2/PTC21/*.cpp",
+                "${workspaceFolder}/22TestApplication/PTS2/PTC22/*.cpp",
                 "${workspaceFolder}/22TestApplication/PTS1/PTC11/*.cpp",
+                "${workspaceFolder}/22TestApplication/PTS1/PTC12/*.cpp",
+                "${workspaceFolder}/22TestApplication/PTS1/PTC13/*.cpp",
+                "${workspaceFolder}/22TestApplication/PTS1/PTC14/*.cpp",
                 "${workspaceFolder}/21TestPlatform/TestCase/*.cpp",
                 "${workspaceFolder}/21TestPlatform/TestAspect/*.cpp",
                 "${workspaceFolder}/21TestPlatform/TestObject/*.cpp",
@@ -18,7 +24,7 @@
                 "${workspaceFolder}/01Base/Aspect/*.cpp",
                 "${workspaceFolder}/01Base/Object/*.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/bin/PlatformLinux"
             ],
             "options": {
                 "cwd": "/usr/bin"

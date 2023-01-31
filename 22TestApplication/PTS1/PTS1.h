@@ -3,13 +3,17 @@
 #include <22TestApplication/typedef.h>
 #define _PTS1_Id _GET_TESTLAYER_UID(_ELayer_TestApplication::_ePTS1)
 #define _PTS1_Name "PTS1"
+#include <22TestApplication/PTS1/Config.h>
 
 #include <21TestPlatform/TestCase/TestSuite.h>
-#include <22TestApplication/PTS1/PTC11/PTC11.h>
 #include <13PTechnical/PMemoryManager/PMemory.h>
-// #include <22TestApplication/PTS1/PTC12/PTC12.h>
-// #include <22TestApplication/PTS1/PTC13/PTC13.h>
-// #include <22TestApplication/PTS1/PTC14/PTC14.h>
+
+#include <22TestApplication/PTS1/PTC11/PTC11.h>
+#include <22TestApplication/PTS1/PTC12/PTC12.h>
+#include <22TestApplication/PTS1/PTC13/PTC13.h>
+#include <22TestApplication/PTS1/PTC14/PTC14.h>
+
+
 
 template <int SIZE_SYSTEM_MEMORY, int SIZE_USER_MEMORY, int SIZE_PAGE, int SIZE_SLOT_UNIT>
 class PTS1: public TestSuite {
@@ -51,11 +55,11 @@ public:
 			m_pMemory->Show("m_pMemory::Initialize()");
 
 			this->add(new("PTC11") PTC11());
-			// this->add(new("PTC12") PTC12());
-			// this->add(new("PTC13") PTC13());
-			// this->add(new("PTC14") PTC14());
-			// this->add(new("PTC11") PTC11());
-			// this->add(new("PTC12") PTC12());
+			this->add(new("PTC12") PTC12());
+			this->add(new("PTC13") PTC13());
+			this->add(new("PTC14") PTC14());
+			this->add(new("PTC11") PTC11());
+			this->add(new("PTC12") PTC12());
 		}
 		catch (Exception& exception) {
 			exception.Println();
