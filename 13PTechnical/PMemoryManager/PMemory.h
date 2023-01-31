@@ -5,18 +5,16 @@
 #define _PMemory_Name "PMemory"
 
 #include <03Technical/MemoryManager/Memory.h>
+#include <pthread.h>
 
 class PMemory : public Memory {
 private:
 //	CRITICAL_SECTION CriticalSection;
+	pthread_mutex_t m_mutex;
 
 protected:
-	virtual void Lock() {
-//		EnterCriticalSection(&CriticalSection);
-	}
-	virtual void UnLock() {
-//		LeaveCriticalSection(&CriticalSection);
-	}
+	void Lock() override;
+	void UnLock() override;
 
 public:
 	PMemory(
@@ -24,21 +22,10 @@ public:
 		size_t szMemoryAllocated,
 		size_t szPage,
 		size_t szSlotUnit,
+		unsigned nClassId = _PMemory_Id,
+		const char* pcClassName = _PMemory_Name);
+	~PMemory() override;
 
-		int nClassId = _PMemory_Id,
-		const char* pcClassName = _PMemory_Name)
-		: Memory(pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit, nClassId, pcClassName)
-	{
-//		InitializeCriticalSection(&CriticalSection);
-	}
-	virtual ~PMemory() {
-//		DeleteCriticalSection(&CriticalSection);
-	}
-
-	virtual void Initialize() {
-		Memory::Initialize();
-	}
-	virtual void Finalize() {
-		Memory::Finalize();
-	}
+	virtual void Initialize() override;
+	virtual void Finalize() override;
 };
