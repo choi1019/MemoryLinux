@@ -16,7 +16,7 @@
 template <int SIZE_SYSTEM_MEMORY, int SIZE_USER_MEMORY, int SIZE_PAGE, int SIZE_SLOT_UNIT>
 class PTS1: public TestSuite {
 private:
-	Memory* m_pMemory;
+	PMemoryVariable* m_pMemoryVariable;
 
 	size_t m_szSystemMemory;
 	char* m_pSystemMemeoryAllocated;
@@ -29,7 +29,7 @@ public:
 		unsigned classId = _PTS1_Id,
 		const char* pClassName = _PTS1_Name)
 		: TestSuite(classId, pClassName)
-		, m_pMemory(nullptr)
+		, m_pMemoryVariable(nullptr)
 		, m_pSystemMemeoryAllocated(nullptr)
 		, m_pUserMemeoryAllocated(nullptr)
 	{
@@ -47,10 +47,10 @@ public:
 			m_szUserMemory = SIZE_USER_MEMORY;
 			m_pUserMemeoryAllocated = new char[m_szUserMemory];
 
-			m_pMemory = new(m_pSystemMemeoryAllocated, m_szSystemMemory) PMemory(m_pUserMemeoryAllocated, m_szUserMemory, SIZE_PAGE, SIZE_SLOT_UNIT);
-
-			m_pMemory->Initialize();
-			m_pMemory->Show("m_pMemory::Initialize()");
+			m_pMemoryVariable = new(m_pSystemMemeoryAllocated, m_szSystemMemory) 
+							PMemoryVariable(m_pUserMemeoryAllocated, m_szUserMemory, SIZE_PAGE, SIZE_SLOT_UNIT);
+			m_pMemoryVariable->Initialize();
+			m_pMemoryVariable->Show("m_pMemory::Initialize()");
 
 			this->add(new("PTC11") PTC11());
 			this->add(new("PTC12") PTC12());
@@ -67,9 +67,10 @@ public:
 
 	void Finalize() {
 		try {
-			m_pMemory->Finalize();
-			m_pMemory->GetPPageList()->Show("");
-			m_pMemory->Show("");
+			m_pMemoryVariable->Finalize();
+			m_pMemoryVariable->GetPPageList()->Show("");
+			m_pMemoryVariable->Show("");
+			delete m_pMemoryVariable;
 
 			// delete m_pMemory;
 			delete[] m_pUserMemeoryAllocated;

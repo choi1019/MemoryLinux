@@ -1,8 +1,8 @@
 #pragma once
 
 #include <03Technical/typedef.h>
-#define _Memory_Id _GET_CLASS_UID(_ELayer_Technical::_eMemory)
-#define _Memory_Name "Memory"
+#define _MemoryVariable_Id _GET_CLASS_UID(_ELayer_Technical::_eMemoryVariable)
+#define _MemoryVariable_Name "MemoryVariable"
 
 //#include <stdlib.h>
 
@@ -12,7 +12,7 @@
 #include <03Technical/MemoryManager/PageList.h>
 #include <03Technical/MemoryManager/SlotList.h>
 
-class Memory :public MemoryObject, public IMemory
+class MemoryVariable :public MemoryObject, public IMemory
 {
 public:
 	// static members
@@ -118,18 +118,18 @@ protected:
 
 public:
 	// constructors and destructors
-	Memory(void* pMemeoryAllocated
+	MemoryVariable(void* pMemeoryAllocated
 		, size_t szMemoryAllocated
 		, size_t szPage
 		, size_t szSlotUnit		
-		, int nClassId = _Memory_Id
-		, const char* pClassName = _Memory_Name)
+		, int nClassId = _MemoryVariable_Id
+		, const char* pClassName = _MemoryVariable_Name)
 		: m_pMemeoryAllocated(pMemeoryAllocated)
 		
 		, m_szPage(szPage)
 		, m_szUnit(szSlotUnit)
 	{
-		LOG_HEADER("Memory::Memory(pMemeory,szMemory,szPage,szSlotUnit)"
+		LOG_HEADER("MemoryVariable::MemoryVariable(pMemeory,szMemory,szPage,szSlotUnit)"
 			, (size_t)pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit);
 		this->m_pPageList = new("PageList") PageList((size_t)pMemeoryAllocated, szMemoryAllocated, m_szPage);
 		this->m_pHead = nullptr;
@@ -140,28 +140,28 @@ public:
 		// set as an application memory manager
 		BaseObject::s_pMemory = this;
 
-		LOG_FOOTER("Memory::Memory");
+		LOG_FOOTER("MemoryVariable::MemoryVariable");
 	}
-	virtual ~Memory() 
+	virtual ~MemoryVariable() 
 	{
 		delete this->m_pPageList;
 	}
 
 	virtual void Initialize() {
-		LOG_HEADER("Memory::Initialize");
+		LOG_HEADER("MemoryVariable::Initialize");
 
 		MemoryObject::Initialize();
 		this->m_pPageList->Initialize();
 
-		LOG_FOOTER("Memory::Initialize");
+		LOG_FOOTER("MemoryVariable::Initialize");
 	}
 	virtual void Finalize() {
-		LOG_HEADER("Memory::Finalize");
+		LOG_HEADER("MemoryVariable::Finalize");
 
 		MemoryObject::Finalize();
 		this->m_pPageList->Finalize();
 
-		LOG_FOOTER("Memory::Finalize");
+		LOG_FOOTER("MemoryVariable::Finalize");
 	}
 
 	// methods
@@ -194,7 +194,7 @@ public:
 	static void* s_pCurrentSystemMemoryAllocated;
 	// maintenance
 	virtual void Show(const char* pTitle) {
-		LOG_HEADER("Memory::Show-", pTitle);
+		LOG_HEADER("MemoryVariable::Show-", pTitle);
 		LOG_NEWLINE("SystemMemory(size, current, allocated)"
 			, MemoryObject::s_szSystemMemoryAllocated
 			, (size_t)MemoryObject::s_pCurrentSystemMemoryAllocated

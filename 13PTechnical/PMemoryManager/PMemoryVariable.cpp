@@ -1,15 +1,15 @@
-#include <13PTechnical/PMemoryManager/PMemory.h>
+#include <13PTechnical/PMemoryManager/PMemoryVariable.h>
 
-	void PMemory::Lock() {
+	void PMemoryVariable::Lock() {
 //		EnterCriticalSection(&CriticalSection);
         pthread_mutex_lock(&m_mutex);
 	}
-	void PMemory::UnLock() {
+	void PMemoryVariable::UnLock() {
 //		LeaveCriticalSection(&CriticalSection);
         pthread_mutex_unlock(&m_mutex);
 	}
 
-	PMemory::PMemory(
+	PMemoryVariable::PMemoryVariable(
 		void* pMemeoryAllocated,
 		size_t szMemoryAllocated,
 		size_t szPage,
@@ -17,19 +17,19 @@
 
 		unsigned nClassId,
 		const char* pcClassName)
-		: Memory(pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit, nClassId, pcClassName)
+		: MemoryVariable(pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit, nClassId, pcClassName)
 	{
 //		InitializeCriticalSection(&CriticalSection);
 	}
-	PMemory::~PMemory() {
+	PMemoryVariable::~PMemoryVariable() {
 //		DeleteCriticalSection(&CriticalSection);
 	}
 
-	void PMemory::Initialize() {
+	void PMemoryVariable::Initialize() {
         pthread_mutex_init(&m_mutex, nullptr);
-		Memory::Initialize();
+		MemoryVariable::Initialize();
 	}
-	void PMemory::Finalize() {
-		Memory::Finalize();
+	void PMemoryVariable::Finalize() {
+		MemoryVariable::Finalize();
         pthread_mutex_destroy(&m_mutex);
 	}

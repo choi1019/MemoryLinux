@@ -7,16 +7,11 @@ enum class _ELayer_PTechnical {
 	_eBegin = _GET_LAYER_UID(_ELayer::_ePTechnical),
 
 	_ePMemory,
-	_ePMemoryManager,
+	_ePMemoryStatic,
 	_ePMemoryVariable,
 	_ePMemoryEven,
 
 	_ePTimer,
-	_ePSocketServer,
-	_ePSocketServerWorker,
-	_ePSocketClient,
-
-	_eRSTP,
 
 	_eEnd
 };

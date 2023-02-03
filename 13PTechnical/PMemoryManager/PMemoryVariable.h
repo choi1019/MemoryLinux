@@ -7,7 +7,7 @@
 #include <03Technical/MemoryManager/MemoryVariable.h>
 #include <pthread.h>
 
-class PMemory : public MemoryVariable {
+class PMemoryVariable : public MemoryVariable {
 private:
 //	CRITICAL_SECTION CriticalSection;
 	pthread_mutex_t m_mutex;
@@ -17,14 +17,14 @@ protected:
 	void UnLock() override;
 
 public:
-	PMemory(
+	PMemoryVariable(
 		void* pMemeoryAllocated,
 		size_t szMemoryAllocated,
 		size_t szPage,
 		size_t szSlotUnit,
 		unsigned nClassId = _PMemory_Id,
 		const char* pcClassName = _PMemory_Name);
-	~PMemory() override;
+	~PMemoryVariable() override;
 
 	virtual void Initialize() override;
 	virtual void Finalize() override;
