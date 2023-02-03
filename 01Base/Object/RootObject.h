@@ -7,18 +7,58 @@
 
 class RootObject {
 public:
+		enum class EState {
+		eCreated,
+		eInitialized,
+		eStarted,
+		eStopped,
+		eFinalized,
+		eDeleted,
+		eEnd
+	};
+
+	// class variable
+	static unsigned s_uCounter;
+
+private:
+	// attributes
+	unsigned 	m_uObjectId;
+	unsigned 	m_nClassId;
+	const char* m_pcClassName;
+	size_t 		m_szThis;
+	EState 		m_eState;
+
+public:
+	// getters and setters
+	inline int GetObjectId() { return this->m_uObjectId; }
+	inline int GetClassId() { return this->m_nClassId; }
+	inline const char* GetClassName() { return this->m_pcClassName; }
+
+	inline size_t GetSzThis() { return this->m_szThis; }
+	inline void SetSzThis(size_t szThis) { this->m_szThis = szThis; }
+	inline EState GetEState() { return this->m_eState; }
+	inline void SetEState(EState eState) { this->m_eState = eState; }
+
 	// constructors and destructors
 	RootObject(unsigned nClassId = _RootObject_Id, const char* pcClassName = _RootObject_Name)
+	: m_uObjectId(RootObject::s_uCounter++)
+    , m_nClassId(nClassId)
+	, m_pcClassName(pcClassName)
+	, m_szThis(0)
 	{
+		this->m_eState = EState::eCreated;
 	}
 	virtual ~RootObject() 
 	{
+	    this->m_eState = EState::eDeleted;
 	}
 	virtual void Initialize()
 	{
+		this->m_eState = EState::eInitialized;
 	}
 	virtual void Finalize()
 	{
+		this->m_eState = EState::eFinalized;
 	}
 };
 

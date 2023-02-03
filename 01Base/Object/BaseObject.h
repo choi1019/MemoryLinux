@@ -10,19 +10,6 @@
 
 class BaseObject : public RootObject {
 public:
-	enum class EState {
-		eCreated,
-		eInitialized,
-		eStarted,
-		eStopped,
-		eFinalized,
-		eDeleted,
-		eEnd
-	};
-
-public:
-	// class variable
-	static unsigned s_uCounter;
 	static IMemory* s_pMemory;
 
 	void* operator new (size_t szThis, const char* sMessage);
@@ -34,24 +21,6 @@ public:
 	void operator delete(void* pObject, const char* sMessage);
 	void operator delete[](void* pObject, const char* sMessage);
 
-private:
-	// attributes
-	unsigned 	m_uObjectId;
-	unsigned 	m_nClassId;
-	const char* m_pcClassName;
-	size_t 		m_szThis;
-	EState 		m_eState;
-
-public:
-	// getters and setters
-	inline int GetObjectId() { return this->m_uObjectId; }
-	inline int GetClassId() { return this->m_nClassId; }
-	inline const char* GetClassName() { return this->m_pcClassName; }
-
-	inline size_t GetSzThis() { return this->m_szThis; }
-	inline void SetSzThis(size_t szThis) { this->m_szThis = szThis; }
-	inline EState GetEState() { return this->m_eState; }
-	inline void SetEState(EState eState) { this->m_eState = eState; }
 
 public:
 	// constructors & destructors
@@ -62,11 +31,11 @@ public:
 	
 	virtual void Initialize() {
 		RootObject::Initialize();
-		this->m_eState = EState::eInitialized;
 	}
+	
 	virtual void Finalize() {
 		RootObject::Finalize();
-		this->m_eState = EState::eFinalized;
+
 	}
 
 	// cloneable

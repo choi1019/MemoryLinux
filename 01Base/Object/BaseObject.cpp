@@ -1,7 +1,7 @@
 #include <01Base/Object/BaseObject.h>
 #include <01Base/Aspect/Log.h>
 
-unsigned BaseObject::s_uCounter = 0;
+
 IMemory* BaseObject::s_pMemory = nullptr;
 
 void* BaseObject::operator new (size_t szThis, const char* sMessage) {
@@ -31,13 +31,7 @@ void BaseObject::operator delete[](void* pObject, const char* sMessage) {
 
 BaseObject::BaseObject(int nClassId, const char* pcClassName)
     : RootObject(nClassId, pcClassName)
-    , m_uObjectId(BaseObject::s_uCounter++)
-    , m_nClassId(nClassId)
-	, m_pcClassName(pcClassName)
-	, m_eState(EState::eCreated)
-	, m_szThis(0)
 {
 }
 BaseObject::~BaseObject() {
-    this->m_eState = EState::eDeleted;
 }

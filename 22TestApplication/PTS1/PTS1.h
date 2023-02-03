@@ -6,7 +6,7 @@
 #include <22TestApplication/PTS1/Config.h>
 
 #include <21TestPlatform/TestCase/TestSuite.h>
-#include <13PTechnical/PMemoryManager/PMemory.h>
+#include <13PTechnical/PMemoryManager/PMemoryVariable.h>
 
 #include <22TestApplication/PTS1/PTC11/PTC11.h>
 #include <22TestApplication/PTS1/PTC12/PTC12.h>

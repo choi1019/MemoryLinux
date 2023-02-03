@@ -4,10 +4,10 @@
 #define _PMemory_Id _GET_CLASS_UID(_ELayer_PTechnical::_ePMemory)
 #define _PMemory_Name "PMemory"
 
-#include <03Technical/MemoryManager/Memory.h>
+#include <03Technical/MemoryManager/MemoryVariable.h>
 #include <pthread.h>
 
-class PMemory : public Memory {
+class PMemory : public MemoryVariable {
 private:
 //	CRITICAL_SECTION CriticalSection;
 	pthread_mutex_t m_mutex;
