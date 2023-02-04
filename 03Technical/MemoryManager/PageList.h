@@ -53,13 +53,11 @@ public:
 	virtual ~PageList() {
 	}
 	virtual void Initialize() {
-		LOG_HEADER("PageList::Initialize");
-		LOG_FOOTER("PageList::Initialize");
 	}
 	virtual void Finalize() {
 	}
 
-	PageIndex* Malloc(size_t numPagesRequired) {
+	PageIndex* AllocatePages(size_t numPagesRequired) {
 		if (m_numPagesAvaiable < numPagesRequired) {
 			LOG_NEWLINE("PageList::Malloc(numPagesRequired, m_numPages)", numPagesRequired, m_numPagesAvaiable);
 			throw Exception((unsigned)IMemory::EException::_eNoMorePage, "Memory", "Malloc", "_eNoMorePage");
@@ -93,7 +91,7 @@ public:
 		}
 	}
 
-	void Free(size_t indexFree) {
+	void FreePages(size_t indexFree) {
 		LOG_HEADER("PageList::Free(indexFree)", indexFree);
 		size_t numPagesAllocated = m_apPageIndices[indexFree]->GetNumAllocated();
 		for (size_t i = 0; i < numPagesAllocated; i++) {

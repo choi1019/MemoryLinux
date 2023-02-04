@@ -13,8 +13,8 @@ void* MemoryVariable::operator new(size_t szThis, void* pMemoryAllocated, size_t
     if (szMemoryllocated < szThis) {
         throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "new MemoryVariable", "_eNoMoreSystemMemory");
     }
-    MemoryVariable::s_pAllocated = pMemoryAllocated;
-    MemoryVariable::s_szAllocated = szMemoryllocated;
+    s_pAllocated = pMemoryAllocated;
+    s_szAllocated = szMemoryllocated;
     SlotList::s_pSlotListFree = nullptr;
 
     void* pMemoryVariable = RootObject::s_pMemory->SafeMalloc(szThis, "");
@@ -39,10 +39,9 @@ MemoryVariable::MemoryVariable(size_t szPage, size_t szSlotUnit, int nClassId, c
     LOG_HEADER("MemoryVariable::MemoryVariable(pAllocated,szAllocated,szPage,szSlotUnit)"
         , (size_t)s_pAllocated, s_szAllocated, szPage, szSlotUnit);
     this->m_pPageList = new("PageList") PageList((size_t)s_pAllocated, s_szAllocated, m_szPage);
-    this->m_pSlotListHead = nullptr;
+    this->m_pSlotListHead = new("SlotList 0") SlotList(0, m_pPageList);
     this->m_szUnitExponentOf2 = (size_t)(log2(static_cast<double>(this->m_szUnit)));
-    this->m_szPageExponentOf2 = (size_t)(log2(static_cast<double>(this->m_szPage)));
-
+ 
     // set memory manager of BaseObject as this
     BaseObject::s_pMemory = this;
 
@@ -54,16 +53,10 @@ MemoryVariable::~MemoryVariable()
 }
 
 void MemoryVariable::Initialize() {
-    LOG_HEADER("MemoryVariable::Initialize");
     MemoryObject::Initialize();
-    this->m_pPageList->Initialize();
-    LOG_FOOTER("MemoryVariable::Initialize");
 }
 void MemoryVariable::Finalize() {
-    LOG_HEADER("MemoryVariable::Finalize");
     MemoryObject::Finalize();
-    this->m_pPageList->Finalize();
-    LOG_FOOTER("MemoryVariable::Finalize");
 }
 
 // methods
@@ -77,51 +70,81 @@ void* MemoryVariable::Malloc(size_t szObject, const char* pcName) {
     }
 
     LOG_HEADER("MemoryVariable::Malloc(szObject, szSlot)", szObject, szSlot);
-    if (m_pSlotListHead == nullptr) {
-        // if any SlotList is not generated
-        LOG_NEWLINE("if (m_pSlotListHead == nullptr)");
-        m_pSlotListHead = new("SlotList") SlotList(szSlot, m_pPageList);
-    }
-    else {
-        LOG_NEWLINE("else (m_pSlotListHead != nullptr)");
-    }
+     
+    SlotList *pPrevious = m_pSlotListHead;
+    SlotList *pCurrent = pPrevious->GetPNext(); 
+    while (pCurrent != nullptr) {
+        // if the same size is found
+        if (pCurrent->GetSzSlot() == szSlot) {
+            SlotList *pSibling = pCurrent->GetPSibling();
+            while (pSibling != nullptr) {
+                if (pSibling->GetNumSlots() > 0) {
+                    // found
+                    Slot* pSlot = pSibling->AllocateSlot();
+                    LOG_FOOTER("MemoryVariable::Malloc(pSlot)1", (size_t)pSlot);
+                    return pSlot;   
+                }
+                pSibling = pSibling->GetPNext();
+            }
+            // if current SlotLists has no more slot
+            pSibling = new("SlotList") SlotList(szSlot, m_pPageList);
+            Slot* pSlot = pSibling->AllocateSlot();
+            // insert a new sibling
+            pSibling->SetPSibling(pCurrent->GetPSibling());
+            pCurrent->SetPSibling(pSibling);
+            LOG_FOOTER("MemoryVariable::Malloc(pSlot)2", (size_t)pSlot);
+            return pSlot;  
 
-    Slot* pSlot = m_pSlotListHead->Malloc(szSlot, nullptr);
-    LOG_FOOTER("MemoryVariable::Malloc(pSlot)", (size_t)pSlot);
-
-    return pSlot;
+        } else if (pCurrent->GetSzSlot() > szSlot) {
+            // if slotlist is not available
+            SlotList *pNewSlotList = new("SlotList") SlotList(szSlot, m_pPageList);
+            Slot* pSlot = pNewSlotList->AllocateSlot();
+            // insert a new next head
+            SlotList *pNext = new("SlotList") SlotList(szSlot);
+            pNext->SetPSibling(pNewSlotList);
+            pPrevious->SetPNext(pNext);
+            pNext->SetPNext(pCurrent);
+            LOG_FOOTER("MemoryVariable::Malloc(pSlot)3", (size_t)pSlot);
+            return pSlot;  
+        }
+        pPrevious = pCurrent;
+        pCurrent = pCurrent->GetPNext();
+    } 
+    // if slotlist is null
+    SlotList *pNewSlotList = new("SlotList") SlotList(szSlot, m_pPageList);
+    Slot* pSlot = pNewSlotList->AllocateSlot();
+    // insert a new SlotList
+    SlotList *pNext = new("SlotList") SlotList(szSlot);
+    m_pSlotListHead->SetPNext(pNext);
+    LOG_FOOTER("MemoryVariable::Malloc(pSlot)4", (size_t)pSlot);
+    return pSlot;   
 }
 
 void MemoryVariable::Free(void* pObject) {
     size_t idxPage = ((size_t)pObject - (size_t)s_pAllocated) / m_szPage;
-
-    LOG_HEADER("Memory::Free(pObject, idxPage)", (size_t)pObject, idxPage);
-    bool found = this->m_pSlotListHead->Free((Slot*)pObject, idxPage);
-    // if m_pSlotListHead is a target SlotList
-    if (found) {
-        LOG_NEWLINE("if(found)");
-        // if m_pSlotListHead is a Garbage
-        if (this->m_pSlotListHead->IsGarbage()) {
-            LOG_NEWLINE("if (this->m_pSlotListHead->IsGarbage())");
-            SlotList* pGarbage = this->m_pSlotListHead;
-            if (this->m_pSlotListHead->GetPSibling() != nullptr) {
-                LOG_NEWLINE("if (this->m_pSlotListHead->GetPSibling() != nullptr)");
-                // promote pSibling and delete pGarbage
-                this->m_pSlotListHead = pGarbage->GetPSibling();
-                this->m_pSlotListHead->SetPNext(pGarbage->GetPNext());
+    LOG_HEADER("MemoryVariable::Free(pObject, idxPage)", (size_t)pObject, idxPage);
+    SlotList *pPrevious = m_pSlotListHead;
+    SlotList *pCurrent = pPrevious->GetPNext(); 
+    while (pCurrent != nullptr) {
+        SlotList *pSiblingPrevious = pCurrent;
+        SlotList *pSiblingCurrent = pCurrent->GetPNext();
+        while(pSiblingCurrent != nullptr) {
+            if (pSiblingCurrent->GetIdxPage() == idxPage) {
+                // found
+                pSiblingCurrent->FreeSlot((Slot *)pObject);
+                if (pSiblingCurrent->IsGarbage()) {
+                    delete pCurrent;
+                }
+                LOG_FOOTER("MemoryVariable::Free(pSlot)");
+                return;
             }
-            else {
-                LOG_NEWLINE("if (this->m_pSlotListHead->GetPSibling() == nullptr)");
-                this->m_pSlotListHead = pGarbage->GetPNext();
-            }
-            LOG_NEWLINE("delete pGarbage", (size_t)pGarbage);
-            delete pGarbage;
+            pSiblingPrevious = pSiblingCurrent;
+            pSiblingCurrent = pSiblingCurrent->GetPSibling();
         }
+        pPrevious = pCurrent;
+        pCurrent = pCurrent->GetPNext();
     }
-    else {
-        throw Exception((unsigned)IMemory::EException::_ePageIndexNotFound, "Memory", "Free", (size_t)pObject);
-    }
-    LOG_FOOTER("Memory::Free");
+    throw Exception((unsigned)IMemory::EException::_ePageIndexNotFound, "MemoryVariable", "Free", (size_t)pObject);
 }
 
 void* MemoryVariable::SafeMalloc(size_t szAllocate, const char* pcName)

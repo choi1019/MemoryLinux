@@ -29,15 +29,10 @@ private:
 	size_t m_szPage;
 
 	SlotList* m_pSlotListHead;
-//	SlotList* m_pFreeHead;
+	SlotList* m_pSlotListRecycle;
 	PageList* m_pPageList;
 
 	size_t m_szUnitExponentOf2;
-	size_t m_szPageExponentOf2;
-
-public:
-	// getters and setters
-//	PageList* GetPPageList() { return this->m_pPageList; }
 
 protected:
 	// critical section
