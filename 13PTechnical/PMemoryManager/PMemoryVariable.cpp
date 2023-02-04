@@ -10,14 +10,11 @@
 	}
 
 	PMemoryVariable::PMemoryVariable(
-		void* pMemeoryAllocated,
-		size_t szMemoryAllocated,
 		size_t szPage,
 		size_t szSlotUnit,
-
 		unsigned nClassId,
 		const char* pcClassName)
-		: MemoryVariable(pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit, nClassId, pcClassName)
+		: MemoryVariable(szPage, szSlotUnit, nClassId, pcClassName)
 	{
 //		InitializeCriticalSection(&CriticalSection);
 	}

@@ -6,7 +6,7 @@ enum class _ELayer_Technical {
 	_eBegin = _GET_LAYER_UID(_ELayer::_eTechnical),
 
 	_eMemoryObject,
-	_eMemoryStatic,
+	_eMemorySystem,
 	_eMemoryVariable,
 	_eMemoryEven,
 	_ePageIndex,

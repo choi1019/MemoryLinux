@@ -3,14 +3,12 @@
 SlotList* SlotList::s_pSlotListFree = nullptr;
 
 void* SlotList::operator new(size_t szThis, const char* sMessage) {
-    if (MemoryObject::s_szSystemMemoryAllocated < szThis) {
-        throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "SlotList", "new", "_eNoMoreSystemMemory");
-    }
     void* pNewSlotList = nullptr;
     if (SlotList::s_pSlotListFree == nullptr) {
-        MemoryObject::s_szSystemMemoryAllocated -= szThis;
-        pNewSlotList = MemoryObject::s_pCurrentSystemMemoryAllocated;
-        MemoryObject::s_pCurrentSystemMemoryAllocated = (void*)((size_t)MemoryObject::s_pCurrentSystemMemoryAllocated + szThis);
+        // MemoryObject::s_szSystemMemoryAllocated -= szThis;
+        // pNewSlotList = MemoryObject::s_pCurrentSystemMemoryAllocated;
+        // MemoryObject::s_pCurrentSystemMemoryAllocated = (void*)((size_t)MemoryObject::s_pCurrentSystemMemoryAllocated + szThis);
+        pNewSlotList = RootObject::s_pMemory->SafeMalloc(szThis, sMessage);
         LOG_NEWLINE("***allocate SlotList");
     }
     else {

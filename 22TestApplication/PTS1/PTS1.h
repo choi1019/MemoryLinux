@@ -6,6 +6,7 @@
 #include <22TestApplication/PTS1/Config.h>
 
 #include <21TestPlatform/TestCase/TestSuite.h>
+#include <13PTechnical/PMemoryManager/PMemorySystem.h>
 #include <13PTechnical/PMemoryManager/PMemoryVariable.h>
 
 #include <22TestApplication/PTS1/PTC11/PTC11.h>
@@ -16,6 +17,7 @@
 template <int SIZE_SYSTEM_MEMORY, int SIZE_USER_MEMORY, int SIZE_PAGE, int SIZE_SLOT_UNIT>
 class PTS1: public TestSuite {
 private:
+	PMemorySystem* m_pMemorySystem;
 	PMemoryVariable* m_pMemoryVariable;
 
 	size_t m_szSystemMemory;
@@ -29,6 +31,7 @@ public:
 		unsigned classId = _PTS1_Id,
 		const char* pClassName = _PTS1_Name)
 		: TestSuite(classId, pClassName)
+		, m_pMemorySystem(nullptr)
 		, m_pMemoryVariable(nullptr)
 		, m_pSystemMemeoryAllocated(nullptr)
 		, m_pUserMemeoryAllocated(nullptr)
@@ -42,13 +45,14 @@ public:
 			// system memory allocation
 			m_szSystemMemory = SIZE_SYSTEM_MEMORY;
 			m_pSystemMemeoryAllocated = new char[m_szSystemMemory];
+			m_pMemorySystem = new(m_pSystemMemeoryAllocated, m_szSystemMemory) PMemorySystem();
+			m_pMemorySystem->Initialize();
+			m_pMemorySystem->Show("m_pMemory::Initialize()");
 
 			// aplication memorty allocation
 			m_szUserMemory = SIZE_USER_MEMORY;
 			m_pUserMemeoryAllocated = new char[m_szUserMemory];
-
-			m_pMemoryVariable = new(m_pSystemMemeoryAllocated, m_szSystemMemory) 
-							PMemoryVariable(m_pUserMemeoryAllocated, m_szUserMemory, SIZE_PAGE, SIZE_SLOT_UNIT);
+			m_pMemoryVariable = new(m_pUserMemeoryAllocated, m_szUserMemory) PMemoryVariable(SIZE_PAGE, SIZE_SLOT_UNIT);
 			m_pMemoryVariable->Initialize();
 			m_pMemoryVariable->Show("m_pMemory::Initialize()");
 
@@ -67,13 +71,15 @@ public:
 
 	void Finalize() {
 		try {
+			// delete m_pMemory;
 			m_pMemoryVariable->Finalize();
-			m_pMemoryVariable->GetPPageList()->Show("");
 			m_pMemoryVariable->Show("");
 			delete m_pMemoryVariable;
-
-			// delete m_pMemory;
 			delete[] m_pUserMemeoryAllocated;
+
+			m_pMemorySystem->Finalize();
+			m_pMemorySystem->Show("");
+			delete m_pMemorySystem;
 			delete[] m_pSystemMemeoryAllocated;
 		}
 		catch (Exception& exception) {

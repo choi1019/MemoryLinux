@@ -4,8 +4,6 @@
 #define _MemoryVariable_Id _GET_CLASS_UID(_ELayer_Technical::_eMemoryVariable)
 #define _MemoryVariable_Name "MemoryVariable"
 
-//#include <stdlib.h>
-
 #include <01Base/Memory/IMemory.h>
 #include <03Technical/MemoryManager/MemoryObject.h>
 
@@ -15,31 +13,18 @@
 class MemoryVariable :public MemoryObject, public IMemory
 {
 public:
-	// static members
-	void* operator new(size_t szThis, void* pSystemMemory, const size_t szSystemMemory) {
-		LOG_NEWLINE("@new Memory(szThis,pSystemMemory,szSystemMemory)"
-			, szThis, (size_t)pSystemMemory, szSystemMemory);
-		if (szSystemMemory < szThis) {
-			throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "Memory","new","_eNoMoreSystemMemory");
-		}		
-		
-		MemoryObject::s_pSystemMemoryAllocated = pSystemMemory;
-		MemoryObject::s_pCurrentSystemMemoryAllocated = (void *)((size_t)pSystemMemory + szThis);
-		MemoryObject::s_szSystemMemoryAllocated = szSystemMemory - szThis;
+	// Application Memory
+	static void* s_pMemoryAllocated;
+	static size_t s_szMemoryAllocated;
+	static void* s_pMemoryCurrent;
+	static size_t s_szMemoryCurrent;
 
-		SlotList::s_pSlotListFree = nullptr;
-
-		return MemoryObject::s_pSystemMemoryAllocated;
-	}
-	void operator delete(void* pObject) {
-		LOG_NEWLINE("@delete Memory(pObject)", (size_t)pObject);
-	}
-	void operator delete(void* pObject, void* pSystemMemory, const size_t szSystemMemory) {
-	}
+	void* operator new(size_t szThis, void* pMemoryAllocated, size_t szMemoryllocated);
+	void operator delete(void* pObject);
+	void operator delete(void* pObject, void* pMemoryAllocated, size_t szMemoryllocated);
 
 private:
 	// attributes
-	void* m_pMemeoryAllocated;
 	size_t m_szUnit;
 	size_t m_szPage;
 
@@ -52,166 +37,32 @@ private:
 
 public:
 	// getters and setters
-	PageList* GetPPageList() { return this->m_pPageList; }
+//	PageList* GetPPageList() { return this->m_pPageList; }
 
 protected:
 	// critical section
 	virtual void Lock() = 0;
 	virtual void UnLock() = 0;
 
-	void* Malloc(size_t szObject, const char* pcName = "") { 
-		size_t szSlot = szObject;
-
-		// multiple of WORD
-		szSlot >>= m_szUnitExponentOf2;
-		szSlot <<= m_szUnitExponentOf2;
-		if (szSlot < szObject) {
-			szSlot += m_szUnit;
-		}
-
-		LOG_HEADER("Memory::Malloc(szObject, szSlot)", szObject, szSlot);
-		if (m_pHead == nullptr) {
-			// if any SlotList is not generated
-			LOG_NEWLINE("if (m_pHead == nullptr)");
-			m_pHead = new("SlotList") SlotList(szSlot, m_pPageList);
-		}
-		else {
-			LOG_NEWLINE("else (m_pHead != nullptr)");
-		}
-
-		Slot* pSlot = m_pHead->Malloc(szSlot, nullptr);
-		LOG_FOOTER("Memory::Malloc(pSlot)", (size_t)pSlot);
-		return pSlot;
-	}
-
-	void Free(void* pObject) {
-		size_t indexPage = ((size_t)pObject - (size_t)m_pMemeoryAllocated) / m_szPage;
-
-		LOG_HEADER("Memory::Free(pObject, indexPage)", (size_t)pObject, indexPage);
-		bool found = this->m_pHead->Free((Slot*)pObject, indexPage);
-		// if m_pHead is a target SlotList
-		if (found) {
-			LOG_NEWLINE("if(found)");
-			// if m_pHead is a Garbage
-			if (this->m_pHead->IsGarbage()) {
-				LOG_NEWLINE("if (this->m_pHead->IsGarbage())");
-				SlotList* pGarbage = this->m_pHead;
-				if (this->m_pHead->GetPSibling() != nullptr) {
-					LOG_NEWLINE("if (this->m_pHead->GetPSibling() != nullptr)");
-					// promote pSibling and delete pGarbage
-					this->m_pHead = pGarbage->GetPSibling();
-					this->m_pHead->SetPNext(pGarbage->GetPNext());
-				}
-				else {
-					LOG_NEWLINE("if (this->m_pHead->GetPSibling() == nullptr)");
-					this->m_pHead = pGarbage->GetPNext();
-				}
-				LOG_NEWLINE("delete pGarbage", (size_t)pGarbage);
-				delete pGarbage;
-			}
-		}
-		else {
-			throw Exception((unsigned)IMemory::EException::_ePageIndexNotFound, "Memory", "Free", (size_t)pObject);
-		}
-		LOG_FOOTER("Memory::Free");
-	}
+	void* Malloc(size_t szObject, const char* pcName = "");
+	void Free(void* pObject);
 
 public:
 	// constructors and destructors
-	MemoryVariable(void* pMemeoryAllocated
-		, size_t szMemoryAllocated
-		, size_t szPage
-		, size_t szSlotUnit		
-		, int nClassId = _MemoryVariable_Id
-		, const char* pClassName = _MemoryVariable_Name)
-		: m_pMemeoryAllocated(pMemeoryAllocated)
-		
-		, m_szPage(szPage)
-		, m_szUnit(szSlotUnit)
-	{
-		LOG_HEADER("MemoryVariable::MemoryVariable(pMemeory,szMemory,szPage,szSlotUnit)"
-			, (size_t)pMemeoryAllocated, szMemoryAllocated, szPage, szSlotUnit);
-		this->m_pPageList = new("PageList") PageList((size_t)pMemeoryAllocated, szMemoryAllocated, m_szPage);
-		this->m_pHead = nullptr;
-		this->m_pFreeHead = nullptr;
-		this->m_szUnitExponentOf2 = (size_t)(log2(static_cast<double>(this->m_szUnit)));
-		this->m_szPageExponentOf2 = (size_t)(log2(static_cast<double>(this->m_szPage)));
+	MemoryVariable(
+		size_t szPage,
+		size_t szSlotUnit,
+		int nClassId = _MemoryVariable_Id,
+		const char* pClassName = _MemoryVariable_Name);
+	virtual ~MemoryVariable();;
 
-		// set as an application memory manager
-		BaseObject::s_pMemory = this;
-
-		LOG_FOOTER("MemoryVariable::MemoryVariable");
-	}
-	virtual ~MemoryVariable() 
-	{
-		delete this->m_pPageList;
-	}
-
-	virtual void Initialize() {
-		LOG_HEADER("MemoryVariable::Initialize");
-
-		MemoryObject::Initialize();
-		this->m_pPageList->Initialize();
-
-		LOG_FOOTER("MemoryVariable::Initialize");
-	}
-	virtual void Finalize() {
-		LOG_HEADER("MemoryVariable::Finalize");
-
-		MemoryObject::Finalize();
-		this->m_pPageList->Finalize();
-
-		LOG_FOOTER("MemoryVariable::Finalize");
-	}
+	virtual void Initialize();
+	virtual void Finalize();
 
 	// methods
-	void* SafeMalloc(size_t szAllocate, const char* pcName = "")
-	{
-		try {
-			Lock();
-			void* pMemoryAllocated = this->Malloc(szAllocate, pcName);
-			UnLock();
-			return pMemoryAllocated;
-		}
-		catch (Exception& exception) {
-			exception.Println();
-			exit(1);
-		}
-	}
-	void SafeFree(void* pObject) {
-		try {
-			Lock();
-			this->Free(pObject);
-			UnLock();
-		}
-		catch (Exception& exception) {
-			exception.Println();
-			exit(1);
-		}
-	}
-	static size_t s_szSystemMemoryAllocated;
-	static void* s_pSystemMemoryAllocated;
-	static void* s_pCurrentSystemMemoryAllocated;
-	// maintenance
-	virtual void Show(const char* pTitle) {
-		LOG_HEADER("MemoryVariable::Show-", pTitle);
-		LOG_NEWLINE("SystemMemory(size, current, allocated)"
-			, MemoryObject::s_szSystemMemoryAllocated
-			, (size_t)MemoryObject::s_pCurrentSystemMemoryAllocated
-			, (size_t)MemoryObject::s_pSystemMemoryAllocated
-		);
-		m_pPageList->Show("");
+	void* SafeMalloc(size_t szAllocate, const char* pcName = "");
+	void SafeFree(void* pObject);
 
-		SlotList* pSlotList = this->m_pHead;
-		while (pSlotList != nullptr) {
-			pSlotList->Show("Next");
-			SlotList* pSiblingSlotList = pSlotList->GetPSibling();
-			while (pSiblingSlotList != nullptr) {
-				pSiblingSlotList->Show("Sibling");
-				pSiblingSlotList = pSiblingSlotList->GetPSibling();
-			}
-			pSlotList = pSlotList->GetPNext();
-		}
-		LOG_FOOTER("Memory::Show");
-	};
+	// maintenance
+	virtual void Show(const char* pTitle);
 };
