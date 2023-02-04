@@ -13,11 +13,11 @@
 class MemoryVariable :public MemoryObject, public IMemory
 {
 public:
-	// Application Memory
-	static void* s_pMemoryAllocated;
-	static size_t s_szMemoryAllocated;
-	static void* s_pMemoryCurrent;
-	static size_t s_szMemoryCurrent;
+	// memory for user applicationh
+	static void* s_pAllocated;
+	static size_t s_szAllocated;
+	static void* s_pCurrent;
+	static size_t s_szCurrent;
 
 	void* operator new(size_t szThis, void* pMemoryAllocated, size_t szMemoryllocated);
 	void operator delete(void* pObject);
@@ -28,8 +28,8 @@ private:
 	size_t m_szUnit;
 	size_t m_szPage;
 
-	SlotList* m_pHead;
-	SlotList* m_pFreeHead;
+	SlotList* m_pSlotListHead;
+//	SlotList* m_pFreeHead;
 	PageList* m_pPageList;
 
 	size_t m_szUnitExponentOf2;

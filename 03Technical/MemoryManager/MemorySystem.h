@@ -4,16 +4,16 @@
 #define _MemorySystem_Id _GET_CLASS_UID(_ELayer_Technical::_eMemorySystem)
 #define _MemorySystem_Name "MemorySystem"
 
-#include <01Base/Object/RootObject.h>
 #include <01Base/Memory/IMemory.h>
+#include <03Technical/MemoryManager/MemoryObject.h>
 
-class MemorySystem : public RootObject, public IMemory {
+class MemorySystem : public MemoryObject, public IMemory {
 public:
-	// system memory allocated
-	static void* s_pMemoryAllocated;
-	static size_t s_szMemoryAllocated;
-	static void* s_pMemoryCurrent;
-	static size_t s_szMemoryCurrent;
+	// memory for Memory Manager
+	static void* s_pAllocated;
+	static size_t s_szAllocated;
+	static void* s_pCurrent;
+	static size_t s_szCurrent;
 
 	void* operator new(size_t szThis, void* pMemoryAllocated, size_t szMemoryllocated);
 	void operator delete(void* pObject);
@@ -23,7 +23,7 @@ protected:
 	virtual void Lock() = 0;
 	virtual void UnLock() = 0;
 
-	void* Malloc(size_t szObject, const char* pcName = "");
+	void* Malloc(size_t szObject, const char* sMessage = "");
 	void Free(void* pObject);
 
 public:
@@ -35,9 +35,9 @@ public:
 	virtual void Finalize();
 
 		// methods
-	void* SafeMalloc(size_t szAllocate, const char* pcName = "");
+	void* SafeMalloc(size_t szAllocate, const char* sMessage = "");
 	void SafeFree(void* pObject);
 
 	// maintenance
-	virtual void Show(const char* pTitle);
+	virtual void Show(const char* sMessage);
 };
