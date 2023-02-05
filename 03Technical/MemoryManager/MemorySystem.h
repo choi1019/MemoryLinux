@@ -35,9 +35,9 @@ public:
 	virtual void Finalize();
 
 		// methods
-	void* SafeMalloc(size_t szAllocate, const char* sMessage = "");
-	void SafeFree(void* pObject);
+	void* SafeMalloc(size_t szAllocate, const char* sMessage = "") override;
+	void SafeFree(void* pObject) override;
 
 	// maintenance
-	virtual void Show(const char* sMessage);
+	void Show(const char* sMessage) override;
 };

@@ -12,23 +12,23 @@ public:
 
 class PageIndex : public MemoryObject {
 private:
-	size_t m_index;
+	unsigned m_index;
 	Page* m_pPage;
 
 	bool m_bAllocated;
-	size_t m_numAllocated;
+	unsigned m_numAllocated;
 
 public:
-	size_t GetIndex() { return this->m_index; }
+	unsigned GetIndex() { return this->m_index; }
 	Page* GetPPage() { return this->m_pPage; }
 	bool IsAllocated() { return this->m_bAllocated; }
 	void SetIsAllocated(bool bAllocated) { this->m_bAllocated = bAllocated; }
-	size_t GetNumAllocated() { return this->m_numAllocated; }
+	unsigned GetNumAllocated() { return this->m_numAllocated; }
 	void SetNumAllocated(size_t numAllocated) { this->m_numAllocated = numAllocated; }
 
 public:
 	PageIndex(
-		size_t index,
+		unsigned index,
 		size_t pMemoryAllocated,
 	 	int nClassId = _PageIndex_Id,
 		const char* pClassName = _PageIndex_Name)

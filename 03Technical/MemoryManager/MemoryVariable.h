@@ -26,7 +26,7 @@ public:
 private:
 	// attributes
 	unsigned m_szUnit;
-	size_t m_szPage;
+	unsigned m_szPage;
 
 	SlotList* m_pSlotListHead;
 	PageList* m_pPageList;
@@ -44,8 +44,8 @@ protected:
 public:
 	// constructors and destructors
 	MemoryVariable(
-		size_t szPage,
-		size_t szSlotUnit,
+		unsigned szPage,
+		unsigned szSlotUnit,
 		int nClassId = _MemoryVariable_Id,
 		const char* pClassName = _MemoryVariable_Name);
 	virtual ~MemoryVariable();;
@@ -54,9 +54,9 @@ public:
 	virtual void Finalize();
 
 	// methods
-	void* SafeMalloc(size_t szAllocate, const char* pcName = "");
-	void SafeFree(void* pObject);
+	void* SafeMalloc(size_t szAllocate, const char* pcName = "") override;
+	void SafeFree(void* pObject) override;
 
 	// maintenance
-	virtual void Show(const char* pTitle);
+	void Show(const char* pTitle) override;
 };

@@ -27,13 +27,13 @@ void MemoryVariable::operator delete(void* pObject, void* pMemoryAllocated, size
 
 
 // constructors and destructors
-MemoryVariable::MemoryVariable(size_t szPage, size_t szSlotUnit, int nClassId, const char* pClassName)
+MemoryVariable::MemoryVariable(unsigned szPage, unsigned szSlotUnit, int nClassId, const char* pClassName)
     : m_szPage(szPage)
     , m_szUnit(szSlotUnit)
 {
     this->m_pPageList = new("PageList") PageList((size_t)s_pAllocated, s_szAllocated, m_szPage);
     this->m_pSlotListHead = new("SlotList 0") SlotList(0);
-    this->m_szUnitExponentOf2 = (size_t)(log2(static_cast<double>(this->m_szUnit)));
+    this->m_szUnitExponentOf2 = (unsigned)(log2(static_cast<double>(this->m_szUnit)));
  
     // set memory manager of BaseObject as this
     BaseObject::s_pMemory = this;
@@ -82,7 +82,7 @@ void* MemoryVariable::Malloc(size_t szObject, const char* pcName) {
             return pSlot;  
         } else if (pCurrent->GetSzSlot() < szSlot) {
             if (pCurrent->GetPNext() == nullptr) {
-                // if slotlist is null
+                // if slotlist is null, add new SlotList to the end
                 SlotList *pNewSlotList = new("SlotList3") SlotList(szSlot, m_pPageList);
                 Slot* pSlot = pNewSlotList->AllocateSlot();
                 // insert a new SlotList
@@ -93,7 +93,7 @@ void* MemoryVariable::Malloc(size_t szObject, const char* pcName) {
                 return pSlot;  
             }
         } else if (pCurrent->GetSzSlot() > szSlot) {
-            // if slotlist is not available
+            // if no same size, insert new SlotList
             SlotList *pNewSlotList = new("SlotList4") SlotList(szSlot, m_pPageList);
             Slot* pSlot = pNewSlotList->AllocateSlot();
             // insert a new next head
