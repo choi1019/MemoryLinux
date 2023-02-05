@@ -25,14 +25,13 @@ public:
 
 private:
 	// attributes
-	size_t m_szUnit;
+	unsigned m_szUnit;
 	size_t m_szPage;
 
 	SlotList* m_pSlotListHead;
-	SlotList* m_pSlotListRecycle;
 	PageList* m_pPageList;
 
-	size_t m_szUnitExponentOf2;
+	unsigned m_szUnitExponentOf2;
 
 protected:
 	// critical section

@@ -15,10 +15,10 @@ public:
 	PTC11(
 		unsigned nClassId = _PTC11_Id, 
 		const char* pcClassName = _PTC11_Name);
-	virtual ~PTC11();
+	~PTC11() override;
 
-	void Initialize();
-	void Finalize();
-	void Run();
+	void Initialize() override;
+	void Finalize() override;
+	void Run() override;
 };
 

@@ -21,13 +21,15 @@ public:
 	void operator delete(void* pObject, const char* sMessage);
 	void operator delete[](void* pObject, const char* sMessage);
 
-
 public:
 	// constructors & destructors
 	BaseObject(
 		int nClassId = _BaseObject_Id,
-		const char* pcClassName = _BaseObject_Name);
-	virtual ~BaseObject();
+		const char* pcClassName = _BaseObject_Name)
+		: RootObject(nClassId, pcClassName) {
+	}
+	virtual ~BaseObject() {
+	}
 	
 	virtual void Initialize() {
 		RootObject::Initialize();
@@ -35,7 +37,6 @@ public:
 	
 	virtual void Finalize() {
 		RootObject::Finalize();
-
 	}
 
 	// cloneable

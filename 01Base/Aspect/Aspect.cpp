@@ -4,7 +4,7 @@
 #define SIZE_TAB 4
 #define SPACE ' '
 
-unsigned Aspect::s_uCountTab = 1;
+int Aspect::s_uCountTab = 1;
 char Aspect::s_pcTab[COUNT_TAB * SIZE_TAB];
 
 char* Aspect::GetTab() {
@@ -15,4 +15,8 @@ char* Aspect::GetTab() {
     return Aspect::s_pcTab;
 }
 void Aspect::AddTab() { Aspect::s_uCountTab++; }
-void Aspect::RemoveTab() { Aspect::s_uCountTab--; }
+void Aspect::RemoveTab() { 
+    if (--Aspect::s_uCountTab < 0){
+        Aspect::s_uCountTab = 0;
+    } 
+}

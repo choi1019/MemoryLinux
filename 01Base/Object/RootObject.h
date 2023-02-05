@@ -18,8 +18,8 @@ public:
 		eDeleted,
 		eEnd
 	};
-	static unsigned s_uObjectCount;
 
+	static unsigned s_uObjectCount;
 	// system memory allocated
 	static IMemory* s_pMemory;
 

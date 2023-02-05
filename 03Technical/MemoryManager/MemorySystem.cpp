@@ -1,7 +1,7 @@
 #include <03Technical/MemoryManager/MemorySystem.h>
 #include <01Base/Aspect/Exception.h>
 #include <01Base/Aspect/Log.h>
-#include <stdlib.h>
+#include <03Technical/MemoryManager/SlotList.h>
 
 void* MemorySystem::s_pAllocated = nullptr;
 size_t MemorySystem::s_szAllocated = 0;
@@ -14,15 +14,13 @@ void* MemorySystem::operator new(size_t szThis, void* pMemoryAllocated, size_t s
     }
     s_pAllocated = pMemoryAllocated;
     s_szAllocated = szMemoryllocated;
-
     s_pCurrent = (void*)((size_t)s_pAllocated + szThis);
     s_szCurrent = s_szAllocated - szThis;
-    LOG_NEWLINE("@new MemorySystem(szThis, pMemoryAllocated, s_szCurrent)"
-                                , szThis, (size_t)pMemoryAllocated, s_szCurrent);
+
+    LOG_NEWLINE("MemorySystem::new", szThis, s_szCurrent, s_szAllocated);
     return s_pAllocated;
 }
 void MemorySystem::operator delete(void* pObject) {
-    LOG_NEWLINE("@delete MemorySystem(pObject)", (size_t)pObject);
 }
 void MemorySystem::operator delete(void* pObject, void* pMemoryAllocated, size_t szMemoryllocated) {
     throw Exception((unsigned)IMemory::EException::_eNotSupport, "MemorySystem::delete", "_eNotSupport");
@@ -30,11 +28,13 @@ void MemorySystem::operator delete(void* pObject, void* pMemoryAllocated, size_t
 
 void* MemorySystem::Malloc(size_t szObject, const char* sMessage) {
     if (s_szCurrent < szObject) {
-        throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, sMessage, "new MemorySystem", "_eNoMoreSystemMemory");
-    }
+        throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, sMessage, "MemorySystem::Malloc", "_eNoMoreSystemMemory");
+    }    
     void* pMemoryAllocated = s_pCurrent;
     s_pCurrent = (void*)((size_t)s_pCurrent + szObject);
     s_szCurrent = s_szCurrent - szObject;
+
+    LOG_NEWLINE(sMessage, szObject, s_szCurrent, s_szAllocated);
     return pMemoryAllocated;
 }
 void MemorySystem::Free(void* pObject) {
@@ -47,7 +47,7 @@ MemorySystem::MemorySystem(int nClassId, const char* pClassName)
     RootObject::s_pMemory = this;
 }
 MemorySystem::~MemorySystem() {
-}
+ }
 void MemorySystem::Initialize() {
     MemoryObject::Initialize();
 }
@@ -58,32 +58,21 @@ void MemorySystem::Finalize() {
     // methods
 void* MemorySystem::SafeMalloc(size_t szAllocate, const char* sMessage)
 {
-    try {
-        Lock();
-        void* pMemoryAllocated = this->Malloc(szAllocate, sMessage);
-        UnLock();
-        return pMemoryAllocated;
-    }
-    catch (Exception& exception) {
-        exception.Println();
-        exit(1);
-    }
+    Lock();
+    void* pMemoryAllocated = this->Malloc(szAllocate, sMessage);
+    UnLock();
+    return pMemoryAllocated;
+
 }
 void MemorySystem::SafeFree(void* pObject) {
-    try {
-        Lock();
-        this->Free(pObject);
-        UnLock();
-    }
-    catch (Exception& exception) {
-        exception.Println();
-        exit(1);
-    }
+    Lock();
+    this->Free(pObject);
+    UnLock();
 }
 
 // maintenance
 void MemorySystem::Show(const char* pTitle) {
-        LOG_HEADER("MemorySystem::Show-", pTitle);
+    LOG_HEADER("MemorySystem::Show-", pTitle);
     LOG_NEWLINE("MemorySystem(szAllocated, pAllocated, szCurrent, pCurrent)"
     	, s_szAllocated
     	, (size_t)s_pAllocated

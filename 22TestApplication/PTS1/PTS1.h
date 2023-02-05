@@ -17,14 +17,13 @@
 template <int SIZE_SYSTEM_MEMORY, int SIZE_USER_MEMORY, int SIZE_PAGE, int SIZE_SLOT_UNIT>
 class PTS1: public TestSuite {
 private:
-	PMemorySystem* m_pMemorySystem;
-	PMemoryVariable* m_pMemoryVariable;
-
 	size_t m_szSystemMemory;
 	char* m_pSystemMemeoryAllocated;
+	PMemorySystem* m_pMemorySystem;
 
 	size_t m_szUserMemory;
 	char* m_pUserMemeoryAllocated;
+	PMemoryVariable* m_pMemoryVariable;
 
 public:
 	PTS1(
@@ -47,14 +46,14 @@ public:
 			m_pSystemMemeoryAllocated = new char[m_szSystemMemory];
 			m_pMemorySystem = new(m_pSystemMemeoryAllocated, m_szSystemMemory) PMemorySystem();
 			m_pMemorySystem->Initialize();
-			m_pMemorySystem->Show("m_pMemory::Initialize()");
+			m_pMemorySystem->Show("m_pMemorySystem::Initialize()");
 
 			// aplication memorty allocation
 			m_szUserMemory = SIZE_USER_MEMORY;
 			m_pUserMemeoryAllocated = new char[m_szUserMemory];
 			m_pMemoryVariable = new(m_pUserMemeoryAllocated, m_szUserMemory) PMemoryVariable(SIZE_PAGE, SIZE_SLOT_UNIT);
 			m_pMemoryVariable->Initialize();
-			m_pMemoryVariable->Show("m_pMemory::Initialize()");
+			m_pMemoryVariable->Show("m_pMemoryVariable::Initialize()");
 
 			this->add(new("PTC11") PTC11());
 			this->add(new("PTC12") PTC12());

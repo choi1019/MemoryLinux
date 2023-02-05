@@ -6,23 +6,19 @@ PTC12::PTC12(unsigned nClassId, const char* pcClassName)
 	, m_pDomainObject1(nullptr)
 	, m_pDomainObject2(nullptr)
 {
-	m_pDomainObject1 = new("PTC12::DomainObject1") DomainObject12();
-	BaseObject::s_pMemory->Show("");
-	m_pDomainObject2 = new("PTC12::DomainObject2") DomainObject12();
-	BaseObject::s_pMemory->Show("");
 }
 
 PTC12::~PTC12() {
-	delete m_pDomainObject1;
-	BaseObject::s_pMemory->Show("delete PTC12::m_pDomainObject1");
-	delete m_pDomainObject2;
-	BaseObject::s_pMemory->Show("delete PTC12::m_pDomainObject2");
 }
 
 void PTC12::Initialize() {
+	m_pDomainObject1 = new("PTC12::DomainObject1") DomainObject12();
+	m_pDomainObject2 = new("PTC12::DomainObject2") DomainObject12();
 }
 
 void PTC12::Finalize() {
+	delete m_pDomainObject1;
+	delete m_pDomainObject2;
 }
 
 void PTC12::Run() {

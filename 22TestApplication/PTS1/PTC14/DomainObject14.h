@@ -17,14 +17,11 @@ public:
 	}
 
 	void Run() {
-		LOG_HEADER("DomainObject14::Run", m_pVector->Max_size());
 		for (int i = 0; i < m_pVector->Max_size(); i++) {
 			this->m_pVector->Add(i);
 		}
 //		for (int i = 0; i < m_pVector->Max_size(); i++) {
 //			LOG((*m_pVector)[i]);
 //		}
-
-		LOG_FOOTER("DomainObject14::Run");
 	}
 };

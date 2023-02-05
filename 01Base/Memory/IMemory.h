@@ -17,7 +17,8 @@ public:
 		_eSlotSizeSmall,
 		_ePageIndexNotFound,
 		_eNotSupport,
-
+		_eSlotlistAllocationFailed,
+		_eSlotlistFreeFailed,
 		_eEnd
 	};
 
