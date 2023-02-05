@@ -14,8 +14,8 @@ public:
 
 class SlotList : public MemoryObject {
 public:
+	// for recycle
 	static SlotList* s_pSlotListRecycle;
-
 	void* operator new(size_t szThis, const char* sMessage);
 	void operator delete(void* pObject);
 	void operator delete(void* pObject, const char* sMessage);

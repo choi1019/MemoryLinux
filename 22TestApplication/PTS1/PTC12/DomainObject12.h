@@ -4,7 +4,6 @@
 #include <01Base/Aspect/Log.h>
 #include <01Base/StdLib/Vector.h>
 #include <03Technical/MemoryManager/MemoryVariable.h>
-#include <03Technical/MemoryManager/MemorySystem.h>
 
 class DomainObject12 : public BaseObject {
 private:

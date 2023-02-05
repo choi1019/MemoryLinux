@@ -5,7 +5,7 @@ SlotList* SlotList::s_pSlotListRecycle = nullptr;
 void* SlotList::operator new(size_t szThis, const char* sMessage) {
     void* pNewSlotList = nullptr;
     if (SlotList::s_pSlotListRecycle == nullptr) {
-        pNewSlotList = RootObject::s_pMemory->SafeMalloc(szThis, sMessage);
+        pNewSlotList = MemoryObject::s_pMemory->SafeMalloc(szThis, sMessage);
     }
     else {
         pNewSlotList = SlotList::s_pSlotListRecycle;

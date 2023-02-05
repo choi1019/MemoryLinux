@@ -25,7 +25,7 @@
                 "${workspaceFolder}/01Base/Aspect/*.cpp",
                 "${workspaceFolder}/01Base/Object/*.cpp",
                 "-o",
-                "${workspaceFolder}/bin/PlatformLinux"
+                "${workspaceFolder}/bin/MemoryLinux"
             ],
             "options": {
                 "cwd": "/usr/bin"

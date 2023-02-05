@@ -14,12 +14,12 @@ void* MemoryVariable::operator new(size_t szThis, void* pMemoryAllocated, size_t
     }
     s_pAllocated = pMemoryAllocated;
     s_szAllocated = szMemoryllocated;
-    void* pMemoryVariable = RootObject::s_pMemory->SafeMalloc(szThis, "pMemoryVariable");    
+    void* pMemoryVariable = MemoryObject::s_pMemory->SafeMalloc(szThis, "pMemoryVariable");    
     SlotList::s_pSlotListRecycle = nullptr;
     return pMemoryVariable;
 }
 void MemoryVariable::operator delete(void* pObject) {
-    RootObject::s_pMemory->SafeFree(pObject);
+    MemoryObject::s_pMemory->SafeFree(pObject);
  }
 void MemoryVariable::operator delete(void* pObject, void* pMemoryAllocated, size_t szMemoryllocated) {
     throw Exception((unsigned)IMemory::EException::_eNotSupport, "delete MemoryVariable", "_eNotSupport");
@@ -28,7 +28,8 @@ void MemoryVariable::operator delete(void* pObject, void* pMemoryAllocated, size
 
 // constructors and destructors
 MemoryVariable::MemoryVariable(unsigned szPage, unsigned szSlotUnit, int nClassId, const char* pClassName)
-    : m_szPage(szPage)
+    : MemoryObject(nClassId, pClassName)
+    , m_szPage(szPage)
     , m_szUnit(szSlotUnit)
 {
     this->m_pPageList = new("PageList") PageList((size_t)s_pAllocated, s_szAllocated, m_szPage);

@@ -8,6 +8,18 @@
 
 class MemoryObject : public RootObject {
 public:
+	// system memory allocated
+	static IMemory* s_pMemory;
+
+	void* operator new (size_t szThis, const char* sMessage);
+	void* operator new[] (size_t szThis, const char* sMessage);
+	void operator delete(void* pObject);
+	void operator delete[](void* pObject);
+
+	// dummy
+	void operator delete(void* pObject, const char* sMessage);
+	void operator delete[](void* pObject, const char* sMessage);
+	
 	MemoryObject(
 		int nClassId = _MemoryObject_Id,
 		const char* pClassName = _MemoryObject_Name)

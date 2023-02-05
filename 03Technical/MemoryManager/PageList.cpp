@@ -7,6 +7,7 @@ PageList::PageList(
     int nClassId,
     const char* pClassName)
     : MemoryObject(nClassId, pClassName)
+    , m_pMemeoryAllocated(pMemeoryAllocated)
     , m_szPage(szPage)
 {
     if (szMemoryAllocated < m_szPage) {

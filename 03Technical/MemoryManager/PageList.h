@@ -9,6 +9,7 @@
 
 class PageList : public MemoryObject {
 private:
+	size_t m_pMemeoryAllocated;
 	size_t m_szPage;
 	unsigned m_numPagesMax;
 	unsigned m_numPagesAvaiable;

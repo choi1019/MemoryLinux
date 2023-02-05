@@ -1,29 +1,29 @@
-#include <13PTechnical/PMemoryManager/PMemorySystem.h>
+#include <13PTechnical/PMemoryManager/PMemoryStatic.h>
 
-	void PMemorySystem::Lock() {
+	void PMemoryStatic::Lock() {
 //		EnterCriticalSection(&CriticalSection);
         pthread_mutex_lock(&m_mutex);
 	}
-	void PMemorySystem::UnLock() {
+	void PMemoryStatic::UnLock() {
 //		LeaveCriticalSection(&CriticalSection);
         pthread_mutex_unlock(&m_mutex);
 	}
 
-	PMemorySystem::PMemorySystem(
+	PMemoryStatic::PMemoryStatic(
 		unsigned nClassId,
 		const char* pcClassName)
-		: MemorySystem(nClassId, pcClassName)
+		: MemoryStatic(nClassId, pcClassName)
 	{
 	}
-	PMemorySystem::~PMemorySystem() {
+	PMemoryStatic::~PMemoryStatic() {
 //		DeleteCriticalSection(&CriticalSection);
 	}
 
-	void PMemorySystem::Initialize() {
+	void PMemoryStatic::Initialize() {
         pthread_mutex_init(&m_mutex, nullptr);
-		MemorySystem::Initialize();
+		MemoryStatic::Initialize();
 	}
-	void PMemorySystem::Finalize() {
-		MemorySystem::Finalize();
+	void PMemoryStatic::Finalize() {
+		MemoryStatic::Finalize();
         pthread_mutex_destroy(&m_mutex);
 	}

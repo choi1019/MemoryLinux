@@ -6,7 +6,7 @@
 #include <22TestApplication/PTS1/Config.h>
 
 #include <21TestPlatform/TestCase/TestSuite.h>
-#include <13PTechnical/PMemoryManager/PMemorySystem.h>
+#include <13PTechnical/PMemoryManager/PMemoryStatic.h>
 #include <13PTechnical/PMemoryManager/PMemoryVariable.h>
 
 #include <22TestApplication/PTS1/PTC11/PTC11.h>
@@ -19,7 +19,7 @@ class PTS1: public TestSuite {
 private:
 	size_t m_szSystemMemory;
 	char* m_pSystemMemeoryAllocated;
-	PMemorySystem* m_pMemorySystem;
+	PMemoryStatic* m_pMemoryStatic;
 
 	size_t m_szUserMemory;
 	char* m_pUserMemeoryAllocated;
@@ -30,7 +30,7 @@ public:
 		unsigned classId = _PTS1_Id,
 		const char* pClassName = _PTS1_Name)
 		: TestSuite(classId, pClassName)
-		, m_pMemorySystem(nullptr)
+		, m_pMemoryStatic(nullptr)
 		, m_pMemoryVariable(nullptr)
 		, m_pSystemMemeoryAllocated(nullptr)
 		, m_pUserMemeoryAllocated(nullptr)
@@ -44,9 +44,9 @@ public:
 			// system memory allocation
 			m_szSystemMemory = SIZE_SYSTEM_MEMORY;
 			m_pSystemMemeoryAllocated = new char[m_szSystemMemory];
-			m_pMemorySystem = new(m_pSystemMemeoryAllocated, m_szSystemMemory) PMemorySystem();
-			m_pMemorySystem->Initialize();
-			m_pMemorySystem->Show("m_pMemorySystem::Initialize()");
+			m_pMemoryStatic = new(m_pSystemMemeoryAllocated, m_szSystemMemory) PMemoryStatic();
+			m_pMemoryStatic->Initialize();
+			m_pMemoryStatic->Show("m_pMemoryStatic::Initialize()");
 
 			// aplication memorty allocation
 			m_szUserMemory = SIZE_USER_MEMORY;
@@ -76,9 +76,9 @@ public:
 			delete m_pMemoryVariable;
 			delete[] m_pUserMemeoryAllocated;
 
-			m_pMemorySystem->Finalize();
-			m_pMemorySystem->Show("");
-			delete m_pMemorySystem;
+			m_pMemoryStatic->Finalize();
+			m_pMemoryStatic->Show("");
+			delete m_pMemoryStatic;
 			delete[] m_pSystemMemeoryAllocated;
 		}
 		catch (Exception& exception) {

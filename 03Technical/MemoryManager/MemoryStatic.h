@@ -1,13 +1,13 @@
 #pragma once
 
 #include <03Technical/typedef.h>
-#define _MemorySystem_Id _GET_CLASS_UID(_ELayer_Technical::_eMemorySystem)
-#define _MemorySystem_Name "MemorySystem"
+#define _MemoryStatic_Id _GET_CLASS_UID(_ELayer_Technical::_eMemoryStatic)
+#define _MemoryStatic_Name "MemoryStatic"
 
 #include <01Base/Memory/IMemory.h>
 #include <03Technical/MemoryManager/MemoryObject.h>
 
-class MemorySystem : public MemoryObject, public IMemory {
+class MemoryStatic : public MemoryObject, public IMemory {
 public:
 	// memory for Memory Manager
 	static void* s_pAllocated;
@@ -27,10 +27,10 @@ protected:
 	void Free(void* pObject);
 
 public:
-	MemorySystem(
-		int nClassId = _MemorySystem_Id,
-		const char* pClassName = _MemorySystem_Name);
-	virtual ~MemorySystem();
+	MemoryStatic(
+		int nClassId = _MemoryStatic_Id,
+		const char* pClassName = _MemoryStatic_Name);
+	virtual ~MemoryStatic();
 	virtual void Initialize();
 	virtual void Finalize();
 

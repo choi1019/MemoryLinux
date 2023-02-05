@@ -4,7 +4,7 @@
             "name": "C/C++: g++ build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/PlatformLinux",
+            "program": "${workspaceFolder}/bin/MemoryLinux",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
