@@ -3,7 +3,7 @@
         {
             "name": "PlatformLinux",
             "includePath": [
-                "/home/choisw1019/ProjectsCPP/MemoryLinux/**",
+                "/home/choisw/source/MemoryLinux/**",
                 "${default}"
             ],
             "defines": [
@@ -18,7 +18,7 @@
                 "databaseFilename": "${default}",
                 "path": [
                     "${default}",
-                    "/home/choisw1019/ProjectsCPP/MemoryLinux"
+                    "/home/choisw/source/MemoryLinux"
                 ]
             },
             "intelliSenseMode": "${default}",

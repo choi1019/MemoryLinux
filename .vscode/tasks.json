@@ -6,7 +6,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
-                "-I/home/choisw1019/ProjectsCPP/MemoryLinux/",
+                "-I/home/choisw/source/MemoryLinux/",
                 "-g",
                 "${workspaceFolder}/Main.cpp",
                 "${workspaceFolder}/22TestApplication/PTestMain/PTestMain.cpp",
