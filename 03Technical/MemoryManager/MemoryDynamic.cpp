@@ -1,33 +1,36 @@
-#include <03Technical/MemoryManager/MemoryVariable.h>
+#include <03Technical/MemoryManager/MemoryDynamic.h>
+#include <01Base/Object/ValueObject.h>
 #include <01Base/Aspect/Exception.h>
 #include <01Base/Aspect/Log.h>
 #include <math.h>
 
-void* MemoryVariable::s_pAllocated = nullptr;
-size_t MemoryVariable::s_szAllocated = 0;
-void* MemoryVariable::s_pCurrent = nullptr;
-size_t MemoryVariable::s_szCurrent = 0;
+void* MemoryDynamic::s_pAllocated = nullptr;
+size_t MemoryDynamic::s_szAllocated = 0;
+void* MemoryDynamic::s_pCurrent = nullptr;
+size_t MemoryDynamic::s_szCurrent = 0;
 
-void* MemoryVariable::operator new(size_t szThis, void* pMemoryAllocated, size_t szMemoryllocated) {
+void* MemoryDynamic::operator new(size_t szThis, void* pMemoryAllocated, size_t szMemoryllocated) {
     if (szMemoryllocated < szThis) {
-        throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "new MemoryVariable", "_eNoMoreSystemMemory");
+        throw Exception((unsigned)IMemory::EException::_eNoMoreSystemMemory, "new MemoryDynamic", "_eNoMoreSystemMemory");
     }
     s_pAllocated = pMemoryAllocated;
     s_szAllocated = szMemoryllocated;
-    void* pMemoryVariable = MemoryObject::s_pMemory->SafeMalloc(szThis, "pMemoryVariable");    
+
+    void* pMemoryDynamic = BaseObject::s_pMemory->SafeMalloc(szThis, "pMemoryDynamic");    
     SlotList::s_pSlotListRecycle = nullptr;
-    return pMemoryVariable;
+
+    return pMemoryDynamic;
 }
-void MemoryVariable::operator delete(void* pObject) {
+void MemoryDynamic::operator delete(void* pObject) {
     MemoryObject::s_pMemory->SafeFree(pObject);
  }
-void MemoryVariable::operator delete(void* pObject, void* pMemoryAllocated, size_t szMemoryllocated) {
-    throw Exception((unsigned)IMemory::EException::_eNotSupport, "delete MemoryVariable", "_eNotSupport");
+void MemoryDynamic::operator delete(void* pObject, void* pMemoryAllocated, size_t szMemoryllocated) {
+    throw Exception((unsigned)IMemory::EException::_eNotSupport, "delete MemoryDynamic", "_eNotSupport");
 }
 
 
 // constructors and destructors
-MemoryVariable::MemoryVariable(unsigned szPage, unsigned szSlotUnit, int nClassId, const char* pClassName)
+MemoryDynamic::MemoryDynamic(unsigned szPage, unsigned szSlotUnit, int nClassId, const char* pClassName)
     : MemoryObject(nClassId, pClassName)
     , m_szPage(szPage)
     , m_szUnit(szSlotUnit)
@@ -36,22 +39,22 @@ MemoryVariable::MemoryVariable(unsigned szPage, unsigned szSlotUnit, int nClassI
     this->m_pSlotListHead = new("SlotList 0") SlotList(0);
     this->m_szUnitExponentOf2 = (unsigned)(log2(static_cast<double>(this->m_szUnit)));
  
-    // set memory manager of BaseObject as this
-    BaseObject::s_pMemory = this;
+    // set memory manager of ValueObject as this
+    ValueObject::s_pMemory = this;
 }
-MemoryVariable::~MemoryVariable() {
+MemoryDynamic::~MemoryDynamic() {
     delete this->m_pPageList;
 }
 
-void MemoryVariable::Initialize() {
+void MemoryDynamic::Initialize() {
     MemoryObject::Initialize();
 }
-void MemoryVariable::Finalize() {
+void MemoryDynamic::Finalize() {
     MemoryObject::Finalize();
 }
 
 // methods
-void* MemoryVariable::Malloc(size_t szObject, const char* pcName) { 
+void* MemoryDynamic::Malloc(size_t szObject, const char* sMessage) { 
      // multiple of WORD
     size_t szSlot = szObject;
     szSlot >>= m_szUnitExponentOf2;
@@ -59,7 +62,8 @@ void* MemoryVariable::Malloc(size_t szObject, const char* pcName) {
     if (szSlot < szObject) {
         szSlot += m_szUnit;
     }
-     
+    
+    LOG_NEWLINE("MemoryDynamic::Malloc(szObject)", sMessage, szObject, s_szCurrent, s_szAllocated);
     SlotList *pPrevious = nullptr;
     SlotList *pCurrent = m_pSlotListHead; 
     while (pCurrent != nullptr) {
@@ -108,10 +112,12 @@ void* MemoryVariable::Malloc(size_t szObject, const char* pcName) {
         pCurrent = pCurrent->GetPNext();
     } 
     throw Exception((unsigned)IMemory::EException::_eSlotlistAllocationFailed
-                                        , "MemoryVariable", "Malloc", "Failed");
+                                        , "MemoryDynamic", "Malloc", "Failed");
 }
 
-void MemoryVariable::Free(void* pObject) {
+void MemoryDynamic::Free(void* pObject) {
+    LOG_NEWLINE("MemoryDynamic::Free(pObject)", (size_t)pObject);
+    
     size_t idxPage = ((size_t)pObject - (size_t)s_pAllocated) / m_szPage;
     SlotList *pCurrent = m_pSlotListHead->GetPNext(); 
     while (pCurrent != nullptr) {
@@ -123,7 +129,7 @@ void MemoryVariable::Free(void* pObject) {
                 pSiblingCurrent->FreeSlot((Slot *)pObject);
                 if (pSiblingCurrent->IsGarbage()) {
                     pSiblingPrevious->SetPSibling(pSiblingCurrent->GetPSibling());
-                    LOG_NEWLINE("MemoryVariable::Free-Garbage", (size_t)pSiblingCurrent);
+                    LOG_NEWLINE("MemoryDynamic::Free-Garbage", (size_t)pSiblingCurrent);
                     delete pSiblingCurrent;
                 }
                 return;
@@ -133,25 +139,25 @@ void MemoryVariable::Free(void* pObject) {
         }
         pCurrent = pCurrent->GetPNext();
     }
-    throw Exception((unsigned)IMemory::EException::_eSlotlistFreeFailed, "MemoryVariable", "Free", (size_t)pObject);
+    throw Exception((unsigned)IMemory::EException::_eSlotlistFreeFailed, "MemoryDynamic", "Free", (size_t)pObject);
 }
 
-void* MemoryVariable::SafeMalloc(size_t szAllocate, const char* pcName)
+void* MemoryDynamic::SafeMalloc(size_t szAllocate, const char* pcName)
 {
     Lock();
     void* pMemoryAllocated = this->Malloc(szAllocate, pcName);
     UnLock();
     return pMemoryAllocated;
 }
-void MemoryVariable::SafeFree(void* pObject) {
+void MemoryDynamic::SafeFree(void* pObject) {
     Lock();
     this->Free(pObject);
     UnLock();
 }
 
 // maintenance
-void MemoryVariable::Show(const char* pTitle) {
-    LOG_HEADER("MemoryVariable::Show-", (size_t)s_pCurrent, s_pCurrent);
+void MemoryDynamic::Show(const char* pTitle) {
+    LOG_HEADER("MemoryDynamic::Show-", (size_t)s_pCurrent, s_pCurrent);
     m_pPageList->Show("");
     SlotList* pSlotList = this->m_pSlotListHead;
     while (pSlotList != nullptr) {
@@ -163,5 +169,5 @@ void MemoryVariable::Show(const char* pTitle) {
         }
         pSlotList = pSlotList->GetPNext();
     }
-    LOG_FOOTER("MemoryVariable::Show");
+    LOG_FOOTER("MemoryDynamic::Show");
 };

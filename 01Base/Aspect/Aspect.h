@@ -4,14 +4,14 @@
 #define _Aspect_Id _GET_CLASS_UID(_ELayer_Base::_eAspect)
 #define _Aspect_Name "Aspect"
 
-#include <01Base/Object/BaseObject.h>
+#include <01Base/Object/ValueObject.h>
 
-class Aspect : public BaseObject
+class Aspect : public ValueObject
 {
 public:
 	Aspect(unsigned classId = _Aspect_Id,
 		const char* pClassName = _Aspect_Name)
-		: BaseObject(classId, pClassName)
+		: ValueObject(classId, pClassName)
 	{
 	}
 	virtual ~Aspect() {}

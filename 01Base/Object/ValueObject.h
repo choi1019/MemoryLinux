@@ -1,14 +1,14 @@
 #pragma once
 
 #include <01Base/typedef.h>
-#define _BaseObject_Id _GET_CLASS_UID(_ELayer_Base::_eBaseObject)
-#define _BaseObject_Name "BaseObject"
+#define _ValueObject_Id _GET_CLASS_UID(_ELayer_Base::_eValueObject)
+#define _ValueObject_Name "ValueObject"
 
 //#include "../../01Base/Aspect/Log.h"
 #include <01Base/Object/RootObject.h>
 #include <01Base/Memory/IMemory.h>
 
-class BaseObject : public RootObject {
+class ValueObject : public RootObject {
 public:
 	static IMemory* s_pMemory;
 
@@ -23,12 +23,12 @@ public:
 
 public:
 	// constructors & destructors
-	BaseObject(
-		int nClassId = _BaseObject_Id,
-		const char* pcClassName = _BaseObject_Name)
+	ValueObject(
+		int nClassId = _ValueObject_Id,
+		const char* pcClassName = _ValueObject_Name)
 		: RootObject(nClassId, pcClassName) {
 	}
-	virtual ~BaseObject() {
+	virtual ~ValueObject() {
 	}
 	
 	virtual void Initialize() {
@@ -39,8 +39,8 @@ public:
 		RootObject::Finalize();
 	}
 
-		// cloneable
-	virtual BaseObject* Clone() {
+	// cloneable
+	virtual ValueObject* Clone() {
 		return nullptr;
 	}
 

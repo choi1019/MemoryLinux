@@ -1,8 +1,8 @@
 #pragma once
 
 #include <03Technical/typedef.h>
-#define _MemoryVariable_Id _GET_CLASS_UID(_ELayer_Technical::_eMemoryVariable)
-#define _MemoryVariable_Name "MemoryVariable"
+#define _MemoryDynamic_Id _GET_CLASS_UID(_ELayer_Technical::_eMemoryDynamic)
+#define _MemoryDynamic_Name "MemoryDynamic"
 
 #include <01Base/Memory/IMemory.h>
 #include <03Technical/MemoryManager/MemoryObject.h>
@@ -10,10 +10,10 @@
 #include <03Technical/MemoryManager/PageList.h>
 #include <03Technical/MemoryManager/SlotList.h>
 
-class MemoryVariable :public MemoryObject, public IMemory
+class MemoryDynamic :public MemoryObject, public IMemory
 {
 public:
-	// memory for user applicationh
+	// memory for dynamic malloc/free
 	static void* s_pAllocated;
 	static size_t s_szAllocated;
 	static void* s_pCurrent;
@@ -43,12 +43,12 @@ protected:
 
 public:
 	// constructors and destructors
-	MemoryVariable(
+	MemoryDynamic(
 		unsigned szPage,
 		unsigned szSlotUnit,
-		int nClassId = _MemoryVariable_Id,
-		const char* pClassName = _MemoryVariable_Name);
-	virtual ~MemoryVariable();;
+		int nClassId = _MemoryDynamic_Id,
+		const char* pClassName = _MemoryDynamic_Name);
+	virtual ~MemoryDynamic();;
 
 	virtual void Initialize();
 	virtual void Finalize();

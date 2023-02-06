@@ -8,6 +8,7 @@ enum class _ELayer_Base {
 	// object
 	_eRootObject,
 	_eBaseObject,
+	_eValueObject,
 
 	// memory
 	_eIMemory,

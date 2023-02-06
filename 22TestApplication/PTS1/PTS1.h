@@ -7,7 +7,7 @@
 
 #include <21TestPlatform/TestCase/TestSuite.h>
 #include <13PTechnical/PMemoryManager/PMemoryStatic.h>
-#include <13PTechnical/PMemoryManager/PMemoryVariable.h>
+#include <13PTechnical/PMemoryManager/PMemoryDynamic.h>
 
 #include <22TestApplication/PTS1/PTC11/PTC11.h>
 #include <22TestApplication/PTS1/PTC12/PTC12.h>
@@ -23,7 +23,7 @@ private:
 
 	size_t m_szUserMemory;
 	char* m_pUserMemeoryAllocated;
-	PMemoryVariable* m_pMemoryVariable;
+	PMemoryDynamic* m_pMemoryDynamic;
 
 public:
 	PTS1(
@@ -31,7 +31,7 @@ public:
 		const char* pClassName = _PTS1_Name)
 		: TestSuite(classId, pClassName)
 		, m_pMemoryStatic(nullptr)
-		, m_pMemoryVariable(nullptr)
+		, m_pMemoryDynamic(nullptr)
 		, m_pSystemMemeoryAllocated(nullptr)
 		, m_pUserMemeoryAllocated(nullptr)
 	{
@@ -51,9 +51,9 @@ public:
 			// aplication memorty allocation
 			m_szUserMemory = SIZE_USER_MEMORY;
 			m_pUserMemeoryAllocated = new char[m_szUserMemory];
-			m_pMemoryVariable = new(m_pUserMemeoryAllocated, m_szUserMemory) PMemoryVariable(SIZE_PAGE, SIZE_SLOT_UNIT);
-			m_pMemoryVariable->Initialize();
-			m_pMemoryVariable->Show("m_pMemoryVariable::Initialize()");
+			m_pMemoryDynamic = new(m_pUserMemeoryAllocated, m_szUserMemory) PMemoryDynamic(SIZE_PAGE, SIZE_SLOT_UNIT);
+			m_pMemoryDynamic->Initialize();
+			m_pMemoryDynamic->Show("m_pMemoryDynamic::Initialize()");
 
 			this->add(new("PTC11") PTC11());
 			this->add(new("PTC12") PTC12());
@@ -71,9 +71,9 @@ public:
 	void Finalize() {
 		try {
 			// delete m_pMemory;
-			m_pMemoryVariable->Finalize();
-			m_pMemoryVariable->Show("");
-			delete m_pMemoryVariable;
+			m_pMemoryDynamic->Finalize();
+			m_pMemoryDynamic->Show("");
+			delete m_pMemoryDynamic;
 			delete[] m_pUserMemeoryAllocated;
 
 			m_pMemoryStatic->Finalize();

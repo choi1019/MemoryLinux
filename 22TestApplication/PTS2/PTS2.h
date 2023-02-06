@@ -5,7 +5,6 @@
 #define _PTS2_Name "PTS2"
 
 #include <21TestPlatform/TestCase/TestSuite.h>
-#include <13PTechnical/PMemoryManager/PMemoryVariable.h>
 
 class PTS2: public TestSuite {
 public:

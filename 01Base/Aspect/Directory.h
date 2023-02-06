@@ -5,7 +5,7 @@
 #define _Directory_Name "Exception"
 
 #include <01Base/StdLib/Map.h>
-#include <01Base/Aspect/Log.h>
+#include <01Base/StdLib/String.h>
 
 typedef Map<size_t, String> DirectoryMap;
 class Directory : public DirectoryMap
@@ -45,14 +45,7 @@ public:
 	virtual void Finalize() {
 		DirectoryMap::Finalize();
 	}
-
-	void Show(const char* pcTitle) {
-		LOG_HEADER("Directory", (int)m_eType);
-		for (auto itr : *this) {
-			LOG_NEWLINE(itr.first, itr.second);
-		}
-		LOG_FOOTER("Directory", (int)m_eType);
-	}
+	void Show(const char* pcTitle);
 };
 
 

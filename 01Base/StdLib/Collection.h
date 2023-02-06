@@ -4,10 +4,9 @@
 #define _Collection_Id _GET_CLASS_UID(_ELayer_Base::_eCollection)
 #define _Collection_Name "Collection"
 
-#include <01Base/Aspect/Exception.h>
-#include <01Base/Object/BaseObject.h>
+#include <01Base/Object/ValueObject.h>
 
-class Collection : public BaseObject {
+class Collection : public ValueObject {
 public:
 	enum class EError
 	{
@@ -18,15 +17,15 @@ public:
 
 public:
 	Collection(int nClassId = _Collection_Id, const char* cClassName = _Collection_Name)
-		: BaseObject(nClassId, cClassName)
+		: ValueObject(nClassId, cClassName)
 	{
 	}
 	virtual ~Collection() {
 	}
 	virtual void Initialize() {
-		BaseObject::Initialize();
+		ValueObject::Initialize();
 	}
 	virtual void Finalize() {
-		BaseObject::Finalize();
+		ValueObject::Finalize();
 	}
 };

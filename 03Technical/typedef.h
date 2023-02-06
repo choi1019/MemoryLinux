@@ -7,7 +7,7 @@ enum class _ELayer_Technical {
 
 	_eMemoryObject,
 	_eMemoryStatic,
-	_eMemoryVariable,
+	_eMemoryDynamic,
 	_eMemoryEven,
 	_ePageIndex,
 	_ePageList,

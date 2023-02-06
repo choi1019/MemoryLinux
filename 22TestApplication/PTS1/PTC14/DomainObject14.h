@@ -1,15 +1,15 @@
 #pragma once
 
-#include <01Base/Object/BaseObject.h>
+#include <01Base/Object/ValueObject.h>
 #include <01Base/Aspect/Log.h>
 #include <01Base/StdLib/Vector.h>
 
-class DomainObject14 : public BaseObject {
+class DomainObject14 : public ValueObject {
 private:
 	Vector<int, 200>* m_pVector;  // 248 Byte
 
 public:
-	DomainObject14() : BaseObject() {
+	DomainObject14() : ValueObject() {
 		this->m_pVector = new("DomainObject14::m_pVector") Vector<int, 200>();
 	}
 	virtual ~DomainObject14() {

@@ -1,0 +1,1259 @@
+/*
+    -------------------------------------------------
+    <<PTestMain Initialize Start  
+        -------------------------------------------------
+        -------------------------------------------------
+    >>PTestMain Initialize End  
+    -------------------------------------------------
+    -------------------------------------------------
+    <<PTestMain Run Start  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Initialize Start  
+            -------------------------------------------------
+            MemoryStatic::new 88 4008 4096 
+            <<MemoryStatic::Show- m_pMemoryStatic::Initialize()   
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 4096 93824992482640 4008 93824992482728
+            >>MemoryStatic::Show    
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) pMemoryDynamic 120 3888 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) PageList 72 3816 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices** 48 3768 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-0 56 3712 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-1 56 3656 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-2 56 3600 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-3 56 3544 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-4 56 3488 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-5 56 3432 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList 0 104 3328 4096
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 6   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            -------------------------------------------------
+        >>PTS1 Initialize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Run Start  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3224 4096
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 3120 4096
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3016 4096
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 2912 4096
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 4   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 64  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 64 0 
+                        Slot- 93824992486816   
+                        Slot- 93824992486880   
+                        Slot- 93824992486944   
+                        Slot- 93824992487008   
+                        Slot- 93824992487072   
+                        Slot- 93824992487136   
+                        Slot- 93824992487200   
+                        Slot- 93824992487264   
+                        Slot- 93824992487328   
+                        Slot- 93824992487392   
+                        Slot- 93824992487456   
+                        Slot- 93824992487520   
+                        Slot- 93824992487584   
+                        Slot- 93824992487648   
+                        Slot- 93824992487712   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 16 15 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 256 1 
+                        Slot- 93824992488032   
+                        Slot- 93824992488288   
+                        Slot- 93824992488544   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 4 3 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free-Garbage 93824992483616   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 6   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 64  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483408   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483616   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free(pObject) 93824992488032   
+                MemoryDynamic::Free-Garbage 93824992483616   
+                MemoryDynamic::Free(pObject) 93824992486816   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483408   
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483616   
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 2808 4096
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 6144
+                -------------------------------------------------
+            >>PTC13 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC13 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free(pObject) 93824992488224   
+                MemoryDynamic::Free-Garbage 93824992483616   
+                MemoryDynamic::Free(pObject) 93824992486816   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                -------------------------------------------------
+            >>PTC13 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483408   
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483616   
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 2704 4096
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList2 104 2600 4096
+                -------------------------------------------------
+            >>PTC14 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC14 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free-Garbage 93824992483616   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free(pObject) 93824992488800   
+                MemoryDynamic::Free-Garbage 93824992484032   
+                MemoryDynamic::Free(pObject) 93824992486816   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                -------------------------------------------------
+            >>PTC14 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483408   
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484032   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 4   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 64  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 64 0 
+                        Slot- 93824992486816   
+                        Slot- 93824992486880   
+                        Slot- 93824992486944   
+                        Slot- 93824992487008   
+                        Slot- 93824992487072   
+                        Slot- 93824992487136   
+                        Slot- 93824992487200   
+                        Slot- 93824992487264   
+                        Slot- 93824992487328   
+                        Slot- 93824992487392   
+                        Slot- 93824992487456   
+                        Slot- 93824992487520   
+                        Slot- 93824992487584   
+                        Slot- 93824992487648   
+                        Slot- 93824992487712   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 16 15 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 256 1 
+                        Slot- 93824992488032   
+                        Slot- 93824992488288   
+                        Slot- 93824992488544   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 4 3 
+                    <<SlotList::Show(m_szSlot,Index) Next 448  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 864  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free-Garbage 93824992484032   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 6   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 64  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 448  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 864  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992483408   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484032   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992487776   
+                MemoryDynamic::Free(pObject) 93824992486752   
+                MemoryDynamic::Free(pObject) 93824992488032   
+                MemoryDynamic::Free-Garbage 93824992484032   
+                MemoryDynamic::Free(pObject) 93824992486816   
+                MemoryDynamic::Free-Garbage 93824992483408   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS1 Run End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Finalize Start  
+            -------------------------------------------------
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 6   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992486752 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992487776 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992488800 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992489824 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992490848 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992491872 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 64  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 256  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 448  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 864  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            ==> Warning-MemoryStatic::Free(pObject) 93824992482848   
+            ==> Warning-MemoryStatic::Free(pObject) 93824992482728   
+            <<MemoryStatic::Show-    
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 4096 93824992482640 2600 93824992484136
+            >>MemoryStatic::Show    
+            -------------------------------------------------
+        >>PTS1 Finalize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Initialize Start  
+            -------------------------------------------------
+            MemoryStatic::new 88 5912 6000 
+            <<MemoryStatic::Show- m_pMemoryStatic::Initialize()   
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 6000 93824992482640 5912 93824992482728
+            >>MemoryStatic::Show    
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) pMemoryDynamic 120 5792 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) PageList 72 5720 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices** 192 5528 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-0 56 5472 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-1 56 5416 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-2 56 5360 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-3 56 5304 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-4 56 5248 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-5 56 5192 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-6 56 5136 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-7 56 5080 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-8 56 5024 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-9 56 4968 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-10 56 4912 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-11 56 4856 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-12 56 4800 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-13 56 4744 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-14 56 4688 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-15 56 4632 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-16 56 4576 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-17 56 4520 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-18 56 4464 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-19 56 4408 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-20 56 4352 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-21 56 4296 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-22 56 4240 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-23 56 4184 6000
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList 0 104 4080 6000
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 24   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            -------------------------------------------------
+        >>PTS1 Initialize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Run Start  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3976 6000
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 3872 6000
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3768 6000
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 3664 6000
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 22   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 48  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 48 0 
+                        Slot- 93824992493440   
+                        Slot- 93824992493488   
+                        Slot- 93824992493536   
+                        Slot- 93824992493584   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 5 4 
+                    <<SlotList::Show(m_szSlot,Index) Next 240  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 240 1 
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 1 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992484768   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 24   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 48  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 240  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484560   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484768   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList2 104 3560 6000
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992484768   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992493904   
+                MemoryDynamic::Free-Garbage 93824992484976   
+                MemoryDynamic::Free(pObject) 93824992493440   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484560   
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484976   
+                SlotList::newRecycle(pNewSlotList) 93824992484768   
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList2 104 3456 6000
+                -------------------------------------------------
+            >>PTC13 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC13 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992484976   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992494160   
+                MemoryDynamic::Free-Garbage 93824992485080   
+                MemoryDynamic::Free(pObject) 93824992493440   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                -------------------------------------------------
+            >>PTC13 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484560   
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992485080   
+                SlotList::newRecycle(pNewSlotList) 93824992484976   
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 6144
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList2 104 3352 6000
+                -------------------------------------------------
+            >>PTC14 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC14 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992485080   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992494672   
+                MemoryDynamic::Free-Garbage 93824992485184   
+                MemoryDynamic::Free(pObject) 93824992493440   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                -------------------------------------------------
+            >>PTC14 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484560   
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992485184   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 22   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 48  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 48 0 
+                        Slot- 93824992493440   
+                        Slot- 93824992493488   
+                        Slot- 93824992493536   
+                        Slot- 93824992493584   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 5 4 
+                    <<SlotList::Show(m_szSlot,Index) Next 240  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 240 1 
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 1 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 440  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 840  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992485184   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 24   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 48  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 240  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 440  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 840  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992484560   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992485184   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 6144
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 6144
+                SlotList::newRecycle(pNewSlotList) 93824992485080   
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992493648   
+                MemoryDynamic::Free-Garbage 93824992485184   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992493904   
+                MemoryDynamic::Free-Garbage 93824992485080   
+                MemoryDynamic::Free(pObject) 93824992493440   
+                MemoryDynamic::Free-Garbage 93824992484560   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS1 Run End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Finalize Start  
+            -------------------------------------------------
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 24   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992493648 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992493904 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992494160 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 4 93824992494416 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 5 93824992494672 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 6 93824992494928 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 7 93824992495184 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 8 93824992495440 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 9 93824992495696 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 10 93824992495952 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 11 93824992496208 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 12 93824992496464 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 13 93824992496720 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 14 93824992496976 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 15 93824992497232 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 16 93824992497488 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 17 93824992497744 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 18 93824992498000 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 19 93824992498256 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 20 93824992498512 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 21 93824992498768 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 22 93824992499024 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 23 93824992499280 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 48  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 240  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 440  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 840  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            ==> Warning-MemoryStatic::Free(pObject) 93824992482848   
+            ==> Warning-MemoryStatic::Free(pObject) 93824992482728   
+            <<MemoryStatic::Show-    
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 6000 93824992482640 3352 93824992485288
+            >>MemoryStatic::Show    
+            -------------------------------------------------
+        >>PTS1 Finalize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Initialize Start  
+            -------------------------------------------------
+            MemoryStatic::new 88 4008 4096 
+            <<MemoryStatic::Show- m_pMemoryStatic::Initialize()   
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 4096 93824992488736 4008 93824992488824
+            >>MemoryStatic::Show    
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) pMemoryDynamic 120 3888 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) PageList 72 3816 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices** 32 3784 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-0 56 3728 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-1 56 3672 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-2 56 3616 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) m_apPageIndices-3 56 3560 4096
+            MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList 0 104 3456 4096
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 4   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            -------------------------------------------------
+        >>PTS1 Initialize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Run Start  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 8192
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3352 4096
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 3248 4096
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 8192
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotList3 104 3144 4096
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 3040 4096
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 2   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 128  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 128 0 
+                        Slot- 93824992493520   
+                        Slot- 93824992493648   
+                        Slot- 93824992493776   
+                        Slot- 93824992493904   
+                        Slot- 93824992494032   
+                        Slot- 93824992494160   
+                        Slot- 93824992494288   
+                        Slot- 93824992494416   
+                        Slot- 93824992494544   
+                        Slot- 93824992494672   
+                        Slot- 93824992494800   
+                        Slot- 93824992494928   
+                        Slot- 93824992495056   
+                        Slot- 93824992495184   
+                        Slot- 93824992495312   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 16 15 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 256 1 
+                        Slot- 93824992495696   
+                        Slot- 93824992495952   
+                        Slot- 93824992496208   
+                        Slot- 93824992496464   
+                        Slot- 93824992496720   
+                        Slot- 93824992496976   
+                        Slot- 93824992497232   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 8 7 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 4   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 128  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489376   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489584   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 8192
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 8192
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992495696   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493520   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject1 48 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489376   
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489584   
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 2936 4096
+                MemoryDynamic::Malloc(szObject) PTC13::DomainObject2 48 0 8192
+                MemoryDynamic::Malloc(szObject) DomainObject13::m_pVector 440 0 8192
+                -------------------------------------------------
+            >>PTC13 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC13 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC13 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992495952   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493520   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                -------------------------------------------------
+            >>PTC13 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject1 48 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489376   
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489584   
+                MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated) SlotListNext3 104 2832 4096
+                MemoryDynamic::Malloc(szObject) PTC14::DomainObject2 48 0 8192
+                MemoryDynamic::Malloc(szObject) DomainObject14::m_pVector 840 0 8192
+                -------------------------------------------------
+            >>PTC14 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC14 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC14 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992496336   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493520   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                -------------------------------------------------
+            >>PTC14 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC11::DomainObject 48 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489376   
+                MemoryDynamic::Malloc(szObject) m_pVector 240 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489584   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 2   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 t
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 128  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 128 0 
+                        Slot- 93824992493520   
+                        Slot- 93824992493648   
+                        Slot- 93824992493776   
+                        Slot- 93824992493904   
+                        Slot- 93824992494032   
+                        Slot- 93824992494160   
+                        Slot- 93824992494288   
+                        Slot- 93824992494416   
+                        Slot- 93824992494544   
+                        Slot- 93824992494672   
+                        Slot- 93824992494800   
+                        Slot- 93824992494928   
+                        Slot- 93824992495056   
+                        Slot- 93824992495184   
+                        Slot- 93824992495312   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 16 15 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Sibling 256 1 
+                        Slot- 93824992495696   
+                        Slot- 93824992495952   
+                        Slot- 93824992496208   
+                        Slot- 93824992496464   
+                        Slot- 93824992496720   
+                        Slot- 93824992496976   
+                        Slot- 93824992497232   
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Sibling 8 7 
+                    <<SlotList::Show(m_szSlot,Index) Next 512  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 896  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC11 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC11 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                <<MemoryDynamic::Show- 0 0  
+                    <<PageList::Show(m_numPagesAvaiable) 4   
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                        PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                    >>PageList::Show    
+                    <<SlotList::Show(m_szSlot,Index) Next 0  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 128  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 256  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 512  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                    <<SlotList::Show(m_szSlot,Index) Next 896  
+                    >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                >>MemoryDynamic::Show    
+                -------------------------------------------------
+            >>PTC11 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Initialize Start  
+                -------------------------------------------------
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject1 48 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489376   
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 8192
+                SlotList::newRecycle(pNewSlotList) 93824992489584   
+                MemoryDynamic::Malloc(szObject) PTC12::DomainObject2 48 0 8192
+                MemoryDynamic::Malloc(szObject) DomainObject12::m_pVector 240 0 8192
+                -------------------------------------------------
+            >>PTC12 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC12 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC12 Finalize Start  
+                -------------------------------------------------
+                MemoryDynamic::Free(pObject) 93824992495440   
+                MemoryDynamic::Free(pObject) 93824992493392   
+                MemoryDynamic::Free(pObject) 93824992495696   
+                MemoryDynamic::Free-Garbage 93824992489584   
+                MemoryDynamic::Free(pObject) 93824992493520   
+                MemoryDynamic::Free-Garbage 93824992489376   
+                -------------------------------------------------
+            >>PTC12 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS1 Run End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS1 Finalize Start  
+            -------------------------------------------------
+            <<MemoryDynamic::Show- 0 0  
+                <<PageList::Show(m_numPagesAvaiable) 4   
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 0 93824992493392 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 1 93824992495440 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 2 93824992497488 1 f
+                    PageIndex::show(index, pPage, numAllocated, bAllocated) 3 93824992499536 1 f
+                >>PageList::Show    
+                <<SlotList::Show(m_szSlot,Index) Next 0  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 128  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 256  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 512  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+                <<SlotList::Show(m_szSlot,Index) Next 896  
+                >>SlotList::Show(m_numMaxSlots, m_numSlots) Next 0 0 
+            >>MemoryDynamic::Show    
+            ==> Warning-MemoryStatic::Free(pObject) 93824992488944   
+            ==> Warning-MemoryStatic::Free(pObject) 93824992488824   
+            <<MemoryStatic::Show-    
+                MemoryStatic(szAllocated, pAllocated, szCurrent, pCurrent) 4096 93824992488736 2832 93824992490000
+            >>MemoryStatic::Show    
+            -------------------------------------------------
+        >>PTS1 Finalize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS2 Initialize Start  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS2 Initialize End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS2 Run Start  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC21 Initialize Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC21 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC21 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC21 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC21 Finalize Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC21 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC22 Initialize Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC22 Initialize End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC22 Run Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC22 Run End  
+            -------------------------------------------------
+            -------------------------------------------------
+            <<PTC22 Finalize Start  
+                -------------------------------------------------
+                -------------------------------------------------
+            >>PTC22 Finalize End  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS2 Run End  
+        -------------------------------------------------
+        -------------------------------------------------
+        <<PTS2 Finalize Start  
+            -------------------------------------------------
+            -------------------------------------------------
+        >>PTS2 Finalize End  
+        -------------------------------------------------
+        -------------------------------------------------
+    >>PTestMain Run End  
+    -------------------------------------------------
+    -------------------------------------------------
+    <<PTestMain Finalize Start  
+        -------------------------------------------------
+        -------------------------------------------------
+    >>PTestMain Finalize End  
+    -------------------------------------------------
+*/

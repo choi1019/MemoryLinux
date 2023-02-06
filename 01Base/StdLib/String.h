@@ -4,14 +4,14 @@
 #define _String_Id _GET_CLASS_UID(_ELayer_Base::_eString)
 #define _String_Name "String"
 
-#include <01Base/Object/BaseObject.h>
+#include <01Base/StdLib/Collection.h>
 #include <string.h>
 
 #define EOS '\0'
 #define MAXLENGTH_STRING 200
 
 //template<int MAXLENGTH_STRING = 200>
-class String : public BaseObject {
+class String : public Collection {
 private:
 	const char hdigit[16] = { '0', '1', '2', '3', '4', '5' , '6', '7', '8' , '9', 'a', 'b' , 'c', 'd', 'e' };
 	unsigned m_uLength;
@@ -27,7 +27,6 @@ public:
 	}
 
 private:
-
 	inline unsigned computeLength(const char* charArray) {
 		if (charArray == nullptr) return 0;
 
@@ -134,37 +133,37 @@ private:
 	}
 
 public:
-	String() : BaseObject(_String_Id, _String_Name)
+	String() : Collection(_String_Id, _String_Name)
 	{
 		this->m_uLength = 0;
 	}
-	String(const String& rString) : BaseObject(_String_Id, _String_Name)
+	String(const String& rString) : Collection(_String_Id, _String_Name)
 	{
 		unsigned uLength = rString.length();
 		this->copy(rString.c_str(), uLength);
 	}
-	String(const char* rCharArray) : BaseObject(_String_Id, _String_Name)
+	String(const char* rCharArray) : Collection(_String_Id, _String_Name)
 	{
 		unsigned uLength = this->computeLength(rCharArray);
 		this->copy(rCharArray, uLength);
 	}
-	String(const size_t nValue) : BaseObject(_String_Id, _String_Name)
+	String(const size_t nValue) : Collection(_String_Id, _String_Name)
 	{
 		sToa(nValue);
 	}
-	String(const int nValue) : BaseObject(_String_Id, _String_Name)
+	String(const int nValue) : Collection(_String_Id, _String_Name)
 	{
 		iToa(nValue);
 	}
-	String(const unsigned int uValue) : BaseObject(_String_Id, _String_Name)
+	String(const unsigned int uValue) : Collection(_String_Id, _String_Name)
 	{
 		sToa(static_cast<size_t>(uValue));
 	}
-	String(const bool bValue) : BaseObject(_String_Id, _String_Name)
+	String(const bool bValue) : Collection(_String_Id, _String_Name)
 	{
 		bToa(bValue);
 	}
-	String(const void* pValue) : BaseObject(_String_Id, _String_Name)
+	String(const void* pValue) : Collection(_String_Id, _String_Name)
 	{
 		sToa((size_t)pValue);
 	}
@@ -185,8 +184,8 @@ public:
 	}
 	*/
 	~String() {}
-	virtual void Initialize() { BaseObject::Initialize(); }
-	virtual void Finalize() { BaseObject::Finalize(); }
+	virtual void Initialize() { Collection::Initialize(); }
+	virtual void Finalize() { Collection::Finalize(); }
 
 	inline String& operator=(const char* rCharArray) {
 		unsigned uLength = this->computeLength(rCharArray);

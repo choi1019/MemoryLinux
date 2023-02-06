@@ -9,7 +9,7 @@
 
 class MemoryStatic : public MemoryObject, public IMemory {
 public:
-	// memory for Memory Manager
+	// memory for static allocation - no delete
 	static void* s_pAllocated;
 	static size_t s_szAllocated;
 	static void* s_pCurrent;

@@ -30,7 +30,7 @@ MemoryStatic::MemoryStatic(int nClassId, const char* pClassName)
     : MemoryObject(nClassId, pClassName)
 {
     // set memory manager of RootObject as this
-    MemoryObject::s_pMemory = this;
+    BaseObject::s_pMemory = this;
 }
 MemoryStatic::~MemoryStatic() {
  }
@@ -50,10 +50,11 @@ void* MemoryStatic::Malloc(size_t szObject, const char* sMessage) {
     s_pCurrent = (void*)((size_t)s_pCurrent + szObject);
     s_szCurrent = s_szCurrent - szObject;
 
-    LOG_NEWLINE(sMessage, szObject, s_szCurrent, s_szAllocated);
+    LOG_NEWLINE("MemoryStatic::Malloc(szObject, s_szCurrent, s_szAllocated)", sMessage, szObject, s_szCurrent, s_szAllocated);
     return pMemoryAllocated;
 }
 void MemoryStatic::Free(void* pObject) {
+   LOG_NEWLINE("==> Warning-MemoryStatic::Free(pObject)", (size_t)pObject);
 }
 
 void* MemoryStatic::SafeMalloc(size_t szAllocate, const char* sMessage)

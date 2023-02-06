@@ -14,6 +14,7 @@ void PTC11::Initialize() {
 }
 void PTC11::Finalize() {
     delete this->m_pDomainObject;
+    ValueObject::s_pMemory->Show("DomainObject11");
 }
 void PTC11::Run() {
     // test case
